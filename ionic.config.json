@@ -1,0 +1,7 @@
+{
+  "name": "ActuWorld",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
