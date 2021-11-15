@@ -2,6 +2,7 @@
 /* eslint-disable @typescript-eslint/naming-convention */
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import NewsAPI from 'ts-newsapi';
 
 @Component({
   selector: 'app-folder',
@@ -15,31 +16,20 @@ export class FolderPage implements OnInit {
 
   ngOnInit() {
     this.folder = this.activatedRoute.snapshot.paramMap.get('id');
-    // this.test();
+    this.test();
   }
 
-  // NewsAPI = require('newsapi');
-  // newsapi = new this.NewsAPI('73ce7275f8134bee9e9d0399d2ae3314');
-
-  // newsAPI = new NewsAPI('api_key')
-
-  test(): void {
-      // All options passed to topHeadlines are optional, but you need to include at least one of them
-  // this.newsapi.v2.topHeadlines({
-  //   sources: 'bbc-news,the-verge',
-  //   q: 'bitcoin',
-  //   category: 'business',
-  //   language: 'en',
-  //   country: 'us'
-  // }).then(response => {
-  //   console.log(response);
-  //   /*
-  //     {
-  //       status: "ok",
-  //       articles: [...]
-  //     }
-  //   */
-  // });
+  async test(): Promise<void> {
+    const newsAPI = new NewsAPI('73ce7275f8134bee9e9d0399d2ae3314');
+    const sources = await newsAPI.getEverything({
+      q: 'PS5',
+      // qInTitle: 'stock',
+      language: 'fr',
+      sortBy: 'relevancy',
+      pageSize: 20,
+      page: 1,
+  });
+  console.log(typeof sources);
   }
 
 }
