@@ -2,8 +2,7 @@
 /* eslint-disable @typescript-eslint/member-ordering */
 /* eslint-disable @typescript-eslint/naming-convention */
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
-import { HttpClient } from '@angular/common/http';
+import { NewsService } from '../news.service';
 
 @Component({
   selector: 'app-folder',
@@ -12,29 +11,29 @@ import { HttpClient } from '@angular/common/http';
 })
 export class FolderPage implements OnInit {
   public folder: string;
+  articles: any;
+  test2: number[] = [];
 
-  api_key = '73ce7275f8134bee9e9d0399d2ae3314';
-  test: Array<any>;
-
-  constructor(
-    private activatedRoute: ActivatedRoute,
-    private http: HttpClient,
-    ) { }
+  constructor(private news: NewsService) { }
 
   ngOnInit() {
-    this.folder = this.activatedRoute.snapshot.paramMap.get('id');
-    this.getData();
+    this.test();
+    this.test22();
   }
 
-  getData() {
-    this.data().subscribe(
-      data => this.test = data['articles']
-      );
+  test22() {
+    for (let i = 0; i < 25; i++) {
+      this.test2[i] = i ;
+    }
   }
 
-  data() {
-    const test = this.http.get('https://newsapi.org/v2/sources?language=fr&apiKey=' + this.api_key);
-    console.log(test);
-    return test;
+  test() {
+    return this.news.getData('everything?q=tesla&language=fr&').subscribe(
+      data => {
+        this.articles = data;
+        console.log(this.articles);
+      }
+    );
   }
+
 }
