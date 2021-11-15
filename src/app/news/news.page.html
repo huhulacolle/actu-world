@@ -1,0 +1,29 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-card-header>
+      <ion-card-title>News</ion-card-title>
+    </ion-card-header>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+
+  <!-- sert pour refresh la page mais marche pas encore -->
+  <!-- <ion-refresher slot="fixed" (ionRefresh)="refresh()">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher> -->
+
+  <ion-card *ngFor="let article of articles?.articles">
+    <ion-card-header>
+      <ion-card-subtitle>{{article.source.name}}</ion-card-subtitle>
+      <ion-card-title>{{article.title}}</ion-card-title>
+    </ion-card-header>
+  
+    <ion-card-content>
+      {{article.content}}
+    </ion-card-content>
+  </ion-card>
+</ion-content>
