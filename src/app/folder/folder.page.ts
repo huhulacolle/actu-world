@@ -1,8 +1,9 @@
+/* eslint-disable @typescript-eslint/dot-notation */
 /* eslint-disable @typescript-eslint/member-ordering */
 /* eslint-disable @typescript-eslint/naming-convention */
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import NewsAPI from 'ts-newsapi';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-folder',
@@ -12,24 +13,28 @@ import NewsAPI from 'ts-newsapi';
 export class FolderPage implements OnInit {
   public folder: string;
 
-  constructor(private activatedRoute: ActivatedRoute) { }
+  api_key = '73ce7275f8134bee9e9d0399d2ae3314';
+  test: Array<any>;
+
+  constructor(
+    private activatedRoute: ActivatedRoute,
+    private http: HttpClient,
+    ) { }
 
   ngOnInit() {
     this.folder = this.activatedRoute.snapshot.paramMap.get('id');
-    this.test();
+    this.getData();
   }
 
-  async test(): Promise<void> {
-    const newsAPI = new NewsAPI('73ce7275f8134bee9e9d0399d2ae3314');
-    const sources = await newsAPI.getEverything({
-      q: 'PS5',
-      // qInTitle: 'stock',
-      language: 'fr',
-      sortBy: 'relevancy',
-      pageSize: 20,
-      page: 1,
-  });
-  console.log(typeof sources);
+  getData() {
+    this.data().subscribe(
+      data => this.test = data['articles']
+      );
   }
 
+  data() {
+    const test = this.http.get('https://newsapi.org/v2/sources?language=fr&apiKey=' + this.api_key);
+    console.log(test);
+    return test;
+  }
 }
