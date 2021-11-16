@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 
 const API_URL = environment.apiUrl;
@@ -12,7 +13,7 @@ export class NewsService {
 
   constructor(private http: HttpClient) { }
 
-  getNews() {
+  getNews(): Observable<any> {
     return this.http.get(`${API_URL}/top-headlines?country=fr&language=fr&apiKey=${API_KEY}`);
   }
 }

@@ -19,18 +19,17 @@ export class NewsPage implements OnInit {
     this.getNews();
   }
 
-  refresh() {
+  refresh(): void {
     this.router.routeReuseStrategy.shouldReuseRoute = () => false;
 		this.router.onSameUrlNavigation = 'reload';
 		this.router.navigate(['']);
   }
 
-  getNews() {
-    return this.news.getNews().subscribe(
+  getNews(): void {
+    this.news.getNews().subscribe(
       data => {
         this.articles = data['articles'];
-      }
-    );
+      });
   }
 
 }
