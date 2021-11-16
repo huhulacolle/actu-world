@@ -30,7 +30,7 @@ export class NewsPage implements OnInit {
   loading(): void {
     setTimeout(() => {
       this.content = true;
-    }, 3000);
+    }, 2000);
   }
 
   getNews(): void {
