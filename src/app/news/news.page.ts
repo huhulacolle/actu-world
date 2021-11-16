@@ -1,6 +1,5 @@
 /* eslint-disable @typescript-eslint/dot-notation */
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
 import { Article } from '../article';
 import { NewsService } from '../news.service';
 
@@ -14,17 +13,18 @@ export class NewsPage implements OnInit {
   articles: Article[];
   content = false;
 
-  constructor(private news: NewsService, private router: Router) { }
+  constructor(private news: NewsService) { }
 
   ngOnInit() {
     this.loading();
     this.getNews();
   }
 
-  refresh(): void {
-    this.router.routeReuseStrategy.shouldReuseRoute = () => false;
-		this.router.onSameUrlNavigation = 'reload';
-		this.router.navigate(['']);
+  refresh(event): void {
+    setTimeout(() => {
+      this.getNews();
+      event.target.complete();
+    }, 2000);
   }
 
   loading(): void {
