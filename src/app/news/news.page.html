@@ -17,6 +17,7 @@
   </ion-refresher> -->
 
   <ion-card *ngFor="let article of articles">
+    <img src={{article.urlToImage}} />
     <ion-card-header>
       <ion-card-subtitle>{{article.source.name}}</ion-card-subtitle>
       <ion-card-title>{{article.title}}</ion-card-title>
