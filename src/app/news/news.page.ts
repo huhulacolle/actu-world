@@ -12,10 +12,12 @@ import { NewsService } from '../news.service';
 export class NewsPage implements OnInit {
 
   articles: Article[];
+  content = false;
 
   constructor(private news: NewsService, private router: Router) { }
 
   ngOnInit() {
+    this.loading();
     this.getNews();
   }
 
@@ -23,6 +25,12 @@ export class NewsPage implements OnInit {
     this.router.routeReuseStrategy.shouldReuseRoute = () => false;
 		this.router.onSameUrlNavigation = 'reload';
 		this.router.navigate(['']);
+  }
+
+  loading(): void {
+    setTimeout(() => {
+      this.content = true;
+    }, 3000);
   }
 
   getNews(): void {

@@ -14,6 +14,6 @@ export class NewsService {
   constructor(private http: HttpClient) { }
 
   getNews(): Observable<any> {
-    return this.http.get(`${API_URL}/top-headlines?country=fr&language=fr&apiKey=${API_KEY}`);
+    return this.http.get(`${API_URL}/top-headlines?country=fr&pageSize=20&language=fr&apiKey=${API_KEY}`);
   }
 }

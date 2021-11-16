@@ -11,20 +11,41 @@
 
 <ion-content [fullscreen]="true">
 
-  <!-- sert pour refresh la page mais marche pas encore -->
-  <!-- <ion-refresher slot="fixed" (ionRefresh)="refresh()">
-    <ion-refresher-content></ion-refresher-content>
-  </ion-refresher> -->
+  <div *ngIf="!content">
+    <ion-card *ngFor="let item of [].constructor(20)">
+      <ion-card-header>
+        <ion-card-subtitle>
+          <ion-skeleton-text animated style="width: 25%;"></ion-skeleton-text>
+        </ion-card-subtitle>
+        <ion-card-title>
+          <ion-skeleton-text animated style="width: 50%;"></ion-skeleton-text>
+          <ion-skeleton-text animated style="width: 50%;"></ion-skeleton-text>
+        </ion-card-title>
+      </ion-card-header>
 
-  <ion-card *ngFor="let article of articles">
-    <img src={{article.urlToImage}} />
-    <ion-card-header>
-      <ion-card-subtitle>{{article.source.name}}</ion-card-subtitle>
-      <ion-card-title>{{article.title}}</ion-card-title>
-    </ion-card-header>
+      <ion-card-content>
+        <ion-skeleton-text animated></ion-skeleton-text>
+        <ion-skeleton-text animated></ion-skeleton-text>
+        <ion-skeleton-text animated></ion-skeleton-text>
+        <ion-skeleton-text animated style="width: 70%;"></ion-skeleton-text>
+      </ion-card-content>
+    </ion-card>
+  </div>
+
+  <div *ngIf="content">
+    <div *ngFor="let article of articles">
+      <ion-card href={{article.url}}>
+        <img src={{article.urlToImage}} />
+        <ion-card-header>
+          <ion-card-subtitle>{{article.source.name}}</ion-card-subtitle>
+          <ion-card-title>{{article.title}}</ion-card-title>
+        </ion-card-header>
   
-    <ion-card-content>
-      {{article.content}}
-    </ion-card-content>
-  </ion-card>
+        <ion-card-content>
+          {{article.content}}
+        </ion-card-content>
+      </ion-card>
+    </div>
+  </div>
+
 </ion-content>
