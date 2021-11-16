@@ -1,5 +1,7 @@
+/* eslint-disable @typescript-eslint/dot-notation */
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { Article } from '../article';
 import { NewsService } from '../news.service';
 
 @Component({
@@ -9,14 +11,12 @@ import { NewsService } from '../news.service';
 })
 export class NewsPage implements OnInit {
 
-  articles: any;
-  test2: number[] = [];
+  articles: Article[];
 
   constructor(private news: NewsService, private router: Router) { }
 
   ngOnInit() {
-    this.test();
-    this.test22();
+    this.getNews();
   }
 
   refresh() {
@@ -25,17 +25,10 @@ export class NewsPage implements OnInit {
 		this.router.navigate(['']);
   }
 
-  test22() {
-    for (let i = 0; i < 25; i++) {
-      this.test2[i] = i ;
-    }
-  }
-
-  test() {
-    return this.news.getData('top-headlines?country=fr&language=fr&').subscribe(
+  getNews() {
+    return this.news.getNews().subscribe(
       data => {
-        this.articles = data;
-        console.log(this.articles);
+        this.articles = data['articles'];
       }
     );
   }

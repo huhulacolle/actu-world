@@ -12,7 +12,7 @@ export class NewsService {
 
   constructor(private http: HttpClient) { }
 
-  getData(url) {
-    return this.http.get(`${API_URL}/${url}apiKey=${API_KEY}`);
+  getNews() {
+    return this.http.get(`${API_URL}/top-headlines?country=fr&language=fr&apiKey=${API_KEY}`);
   }
 }
