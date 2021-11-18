@@ -10,12 +10,12 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  
-  <ion-refresher slot="fixed" (ionRefresh)="refresh($event)">
-    <ion-refresher-content></ion-refresher-content>
-  </ion-refresher>
 
-  <div *ngIf="!content">
+  <div class="ion-text-center" *ngIf="!content">
+    <br>
+    <ion-spinner></ion-spinner>
+  </div>
+  <!-- <div *ngIf="!content">
     <ion-card *ngFor="let item of [].constructor(20)">
       <ion-card-header>
         <ion-card-subtitle>
@@ -34,7 +34,7 @@
         <ion-skeleton-text animated style="width: 70%;"></ion-skeleton-text>
       </ion-card-content>
     </ion-card>
-  </div>
+  </div> -->
 
   <div *ngIf="content">
     <div *ngFor="let article of articles">
@@ -44,7 +44,7 @@
           <ion-card-subtitle>{{article.source.name}}</ion-card-subtitle>
           <ion-card-title>{{article.title}}</ion-card-title>
         </ion-card-header>
-  
+
         <ion-card-content>
           {{article.content}}
         </ion-card-content>
