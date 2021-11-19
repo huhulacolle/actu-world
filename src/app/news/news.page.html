@@ -15,6 +15,11 @@
     <br>
     <ion-spinner></ion-spinner>
   </div>
+  
+  <ion-refresher slot="fixed" (ionRefresh)="refresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+  
   <!-- <div *ngIf="!content">
     <ion-card *ngFor="let item of [].constructor(20)">
       <ion-card-header>
