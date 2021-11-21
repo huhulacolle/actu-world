@@ -10,3 +10,7 @@ export interface Article {
     publishAt?: string;
     content: string;
 }
+
+export interface Data {
+    articles: Article;
+}

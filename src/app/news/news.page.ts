@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/dot-notation */
 import { Component, OnInit } from '@angular/core';
 import { Article } from '../article';
 import { NewsService } from '../news.service';
@@ -36,7 +35,7 @@ export class NewsPage implements OnInit {
   getNews(): void {
     this.news.getNews().subscribe(
       data => {
-        this.articles = data['articles'];
+        this.articles = data.articles;
       });
   }
 
