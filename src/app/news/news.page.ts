@@ -17,6 +17,7 @@ export class NewsPage implements OnInit {
   ngOnInit() {
     this.loading();
     this.getNews();
+    window.screen.orientation.lock('portrait');
   }
 
   refresh(event): void {
