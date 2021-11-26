@@ -39,5 +39,4 @@ export class NewsPage implements OnInit {
         this.articles = data.articles;
       });
   }
-
 }
