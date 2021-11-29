@@ -16,8 +16,8 @@ const routes: Routes = [
     loadChildren: () => import('./favorite/favorite.module').then( m => m.FavoritePageModule)
   },
   {
-    path: 'archived',
-    loadChildren: () => import('./archived/archived.module').then( m => m.ArchivedPageModule)
+    path: 'search',
+    loadChildren: () => import('./search/search.module').then( m => m.SearchPageModule)
   },
 
 ];

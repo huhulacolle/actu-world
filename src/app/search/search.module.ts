@@ -4,17 +4,17 @@ import { FormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
-import { ArchivedPageRoutingModule } from './archived-routing.module';
+import { SearchPageRoutingModule } from './search-routing.module';
 
-import { ArchivedPage } from './archived.page';
+import { SearchPage } from './search.page';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    ArchivedPageRoutingModule
+    SearchPageRoutingModule
   ],
-  declarations: [ArchivedPage]
+  declarations: [SearchPage]
 })
-export class ArchivedPageModule {}
+export class SearchPageModule {}
