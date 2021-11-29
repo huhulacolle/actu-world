@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { SqlService } from '../sql.service';
 
 @Component({
   selector: 'app-connect',
@@ -7,7 +8,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ConnectPage implements OnInit {
 
-  constructor() { }
+  constructor(private sql: SqlService) { }
+
+  testsql(): void {
+    // this.sql.create();
+  }
 
   ngOnInit() {
   }

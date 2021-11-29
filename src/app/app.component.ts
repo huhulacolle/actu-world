@@ -10,6 +10,7 @@ export class AppComponent {
     { title: 'News', url: '/news', icon: 'document' },
     { title: 'Favoris', url: '/favorite', icon: 'heart' },
     { title: 'Recherche', url: '/search', icon: 'search' },
+    { title: 'testconnect', url: '/connect'},
   ];
   constructor() {}
 }
