@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Platform } from '@ionic/angular';
 import { SqlService } from '../sql.service';
-import { Location } from '@angular/common';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-connect',
@@ -12,8 +12,13 @@ export class ConnectPage implements OnInit {
 
   tests: any;
   nom: string;
+  missing = true;
 
-  constructor(private sql: SqlService, private platform: Platform, private location: Location) {
+  constructor(
+    private sql: SqlService,
+    private platform: Platform,
+    private router: Router,
+  ) {
     this.platform.backButton.subscribeWithPriority(9999, () => {
       // do nothing
       }
@@ -34,8 +39,16 @@ export class ConnectPage implements OnInit {
   }
 
   connect(): void {
-    this.insertsql();
-    this.location.back();
+    // eslint-disable-next-line eqeqeq
+    if (this.nom == '') {
+      alert('faut mettre un nom');
+    }
+    else {
+      this.insertsql();
+      this.router.navigate(['']).then(() =>{
+        window.location.reload();
+      });
+    }
   }
 
   selectsql(): void {
@@ -48,7 +61,6 @@ export class ConnectPage implements OnInit {
       }
     });
   }
-
 
   ngOnInit() {
     this.selectsql();

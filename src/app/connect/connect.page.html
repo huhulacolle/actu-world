@@ -5,18 +5,12 @@
 </ion-header> -->
 
 <ion-content>
-
-  <img src="assets/icon/icon.png">
-  <ion-item>
-    <ion-label>Veillez inséré un nom d'utilisateur</ion-label>
-    <ion-input placeholder="Utilisateur" value="François" #nomValue></ion-input>
-  </ion-item>
-  <!-- <ion-button (click)="testsql()">seed</ion-button>
-  <ion-button (click)="insertsql()">insert</ion-button> -->
-  <ion-button (click)="setNom(nomValue.value)">connecter</ion-button>
-  test : 
-  <div *ngIf="tests">
-    il y a un test
-    {{tests[0].nom}}
+  <div id="container">
+      <strong class="capitalize">Entrée un nom pour votre Profil</strong>
+    <ion-item>
+      <ion-input placeholder="Utilisateur" #nomValue></ion-input>
+    </ion-item>
+    <br>
+    <ion-button (click)="setNom(nomValue.value)">connecter</ion-button>
   </div>
 </ion-content>

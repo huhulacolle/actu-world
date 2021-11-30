@@ -9,18 +9,32 @@ import { SqlService } from './sql.service';
   styleUrls: ['app.component.scss'],
 })
 export class AppComponent implements OnInit {
+
   public appPages = [
     { title: 'News', url: '/news', icon: 'document' },
     { title: 'Favoris', url: '/favorite', icon: 'heart' },
     { title: 'Recherche', url: '/search', icon: 'search' },
-    { title: 'testconnect', url: '/connect'},
   ];
+
+  user: any;
+
   constructor(private sql: SqlService,
     private loadingController: LoadingController,
     private router: Router
     ) {}
   ngOnInit() {
     this.verification();
+  }
+
+  getNom(): void {
+    this.sql.selectsql().then((data) => {
+      this.user = [];
+      if (data.rows.length > 0) {
+        for (let i = 0; i < data.rows.length; i++) {
+          this.user.push(data.rows.item(i));
+        }
+      }
+    });
   }
 
   async presentLoading() {
@@ -33,6 +47,7 @@ export class AppComponent implements OnInit {
   verification(): void {
     this.presentLoading();
     setTimeout(() => {
+      this.getNom();
       this.sql.selectsql().then((data) => {
         if (!data.rows.length) {
           this.router.navigate(['connect']);

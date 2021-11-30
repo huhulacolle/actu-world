@@ -4,7 +4,7 @@
       <ion-content>
         <ion-list id="inbox-list">
           <ion-list-header>ActuWorld</ion-list-header>
-          <ion-note>ça mérite un 20/20 non ?</ion-note>
+          <ion-note>ça mérite un 20/20 non ? </ion-note>
 
           <ion-menu-toggle *ngFor="let p of appPages; let i = index">
             <ion-item routerDirection="root" [routerLink]="[p.url]" detail="false" routerLinkActive="selected">
@@ -14,6 +14,9 @@
           </ion-menu-toggle>
         </ion-list>
       </ion-content>
+      <ion-footer class="ion-no-padding ion-no-margin">
+        <h5>{{user[0].nom}}</h5>
+      </ion-footer>
     </ion-menu>
     <ion-router-outlet id="main-content"></ion-router-outlet>
   </ion-split-pane>

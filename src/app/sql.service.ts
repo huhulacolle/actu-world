@@ -46,24 +46,14 @@ export class SqlService {
   }
 
   insertNom(nom: string): void {
-    this.db.executeSql('INSERT INTO user (id, nom, lastConnect) VALUES (1, ?, 1)', [nom])
-      .catch(
-        e => alert(JSON.stringify(e))
-      );
-  }
-
-  insertsql(): void {
-    this.db.executeSql('INSERT INTO user (id, nom, lastConnect) VALUES (1, "françois", 0);', [])
-      .then(() => {
-        alert('insert crée');
-      })
+    this.db.executeSql('INSERT INTO user (nom, lastConnect) VALUES (?, 1)', [nom])
       .catch(
         e => alert(JSON.stringify(e))
       );
   }
 
   async selectsql() {
-    return this.db.executeSql('SELECT * FROM USER', [])
+    return this.db.executeSql('SELECT * FROM USER WHERE id = 1', [])
       .then((res) => {
         return res;
       })
