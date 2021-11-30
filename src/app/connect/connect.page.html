@@ -9,7 +9,14 @@
   <img src="assets/icon/icon.png">
   <ion-item>
     <ion-label>Veillez inséré un nom d'utilisateur</ion-label>
-    <ion-input placeholder="Utilisateur"></ion-input>
+    <ion-input placeholder="Utilisateur" value="François" #nomValue></ion-input>
   </ion-item>
-  <ion-button (click)="testsql()">test</ion-button>
+  <!-- <ion-button (click)="testsql()">seed</ion-button>
+  <ion-button (click)="insertsql()">insert</ion-button> -->
+  <ion-button (click)="setNom(nomValue.value)">connecter</ion-button>
+  test : 
+  <div *ngIf="tests">
+    il y a un test
+    {{tests[0].nom}}
+  </div>
 </ion-content>
