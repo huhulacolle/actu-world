@@ -45,15 +45,15 @@ export class SqlService {
       });
   }
 
-  insertNom(nom: string): void {
+  setNom(nom: string): void {
     this.db.executeSql('INSERT INTO user (nom, lastConnect) VALUES (?, 1)', [nom])
       .catch(
         e => alert(JSON.stringify(e))
       );
   }
 
-  async selectsql() {
-    return this.db.executeSql('SELECT * FROM USER WHERE id = 1', [])
+  async getUser() {
+    return this.db.executeSql('SELECT * FROM USER WHERE lastConnect = 1', [])
       .then((res) => {
         return res;
       })
@@ -61,5 +61,6 @@ export class SqlService {
         JSON.stringify(e);
       });
   }
+
 }
 

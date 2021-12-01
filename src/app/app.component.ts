@@ -26,8 +26,8 @@ export class AppComponent implements OnInit {
     this.verification();
   }
 
-  getNom(): void {
-    this.sql.selectsql().then((data) => {
+  getUser(): void {
+    this.sql.getUser().then((data) => {
       this.user = [];
       if (data.rows.length > 0) {
         for (let i = 0; i < data.rows.length; i++) {
@@ -47,8 +47,8 @@ export class AppComponent implements OnInit {
   verification(): void {
     this.presentLoading();
     setTimeout(() => {
-      this.getNom();
-      this.sql.selectsql().then((data) => {
+      this.getUser();
+      this.sql.getUser().then((data) => {
         if (!data.rows.length) {
           this.router.navigate(['connect']);
         }

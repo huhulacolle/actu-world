@@ -8,7 +8,7 @@
   <div id="container">
       <strong class="capitalize">Entrée un nom pour votre Profil</strong>
     <ion-item>
-      <ion-input placeholder="Utilisateur" #nomValue></ion-input>
+      <ion-input (keyup.enter)="setNom(nomValue.value)" placeholder="Utilisateur" #nomValue></ion-input>
     </ion-item>
     <br>
     <ion-button (click)="setNom(nomValue.value)">connecter</ion-button>
