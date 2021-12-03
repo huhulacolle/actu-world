@@ -14,6 +14,7 @@ export class AppComponent implements OnInit {
     { title: 'News', url: '/news', icon: 'document' },
     { title: 'Favoris', url: '/favorite', icon: 'heart' },
     { title: 'Recherche', url: '/search', icon: 'search' },
+    { title: 'Profils', url: '/profils', icon: 'person-circle' },
   ];
 
   user: any;

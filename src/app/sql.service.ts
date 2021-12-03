@@ -52,13 +52,23 @@ export class SqlService {
       );
   }
 
-  async getUser() {
+  getUser() {
     return this.db.executeSql('SELECT * FROM USER WHERE lastConnect = 1', [])
       .then((res) => {
         return res;
       })
       .catch((e) => {
-        JSON.stringify(e);
+        alert(JSON.stringify(e));
+      });
+  }
+
+  getAllUser() {
+    return this.db.executeSql('SELECT * FROM USER', [])
+      .then((res) => {
+        return res;
+      })
+      .catch((e) => {
+        alert(JSON.stringify(e));
       });
   }
 
