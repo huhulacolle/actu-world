@@ -14,8 +14,6 @@ import { SQLitePorter } from '@ionic-native/sqlite-porter/ngx';
   declarations: [AppComponent],
   entryComponents: [],
   imports: [
-    RouterModule.forRoot([
-		], { relativeLinkResolution: 'legacy' }),
     BrowserModule,
     IonicModule.forRoot(),
     AppRoutingModule,
