@@ -9,9 +9,6 @@ import { SqlService } from '../sql.service';
 })
 export class ProfilsPage implements OnInit {
 
-	@Input()
-	user: any[];
-
   constructor(private sql: SqlService,  private loadingController: LoadingController) { }
 
   ngOnInit() {
