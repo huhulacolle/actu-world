@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { LoadingController } from '@ionic/angular';
+import { LoadingController, ToastController } from '@ionic/angular';
 import { SqlService } from './sql.service';
 
 @Component({
@@ -21,10 +21,12 @@ export class AppComponent implements OnInit {
 
   constructor(private sql: SqlService,
     private loadingController: LoadingController,
-    private router: Router
+    private router: Router,
+    private toastController: ToastController
     ) {}
   ngOnInit() {
     this.verification();
+    this.presentToast();
   }
 
   getUser(): void {
@@ -51,11 +53,20 @@ export class AppComponent implements OnInit {
       this.getUser();
       this.sql.getUser().then((data) => {
         if (!data.rows.length) {
-          this.router.navigate(['connect']);
+          this.router.navigate(['connect/true']);
         }
       });
     }, 3000);
+  }
 
+  async presentToast() {
+    setTimeout(async () => {
+      const toast = await this.toastController.create({
+      message: 'Vous utilisez actuellement le profil : ' + this.user[0].nom.toString(),
+      duration: 3000
+    });
+    toast.present();
+    }, 4000);
   }
 
 }

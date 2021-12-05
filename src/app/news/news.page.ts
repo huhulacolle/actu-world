@@ -14,7 +14,6 @@ export class NewsPage implements OnInit {
 
   articles: Article[];
   content = false;
-  tests: any;
 
   constructor(
     private news: NewsService,

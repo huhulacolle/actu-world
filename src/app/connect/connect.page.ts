@@ -1,7 +1,9 @@
+/* eslint-disable eqeqeq */
+/* eslint-disable @typescript-eslint/dot-notation */
 import { Component, OnInit } from '@angular/core';
-import { Platform } from '@ionic/angular';
+import { Platform, ToastController } from '@ionic/angular';
 import { SqlService } from '../sql.service';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-connect',
@@ -12,17 +14,22 @@ export class ConnectPage implements OnInit {
 
   tests: any;
   nom: string;
-  missing = true;
+  already: boolean;
 
   constructor(
     private sql: SqlService,
     private platform: Platform,
     private router: Router,
-  ) {
-    this.platform.backButton.subscribeWithPriority(9999, () => {
-      // do nothing
-      }
-    );
+    private route: ActivatedRoute,
+    private toastController: ToastController
+  ) { }
+
+  ngOnInit() {
+    this.selectsql();
+    this.route.params.subscribe(params => {
+			this.already = JSON.parse(params['already']);
+		});
+    this.disableReturn();
   }
 
   setNom(nom: any): void {
@@ -30,12 +37,17 @@ export class ConnectPage implements OnInit {
     this.connect();
   }
 
-  testsql(): void {
-    this.sql.seedDatabase();
-  }
-
   insertsql(): void {
     this.sql.setNom(this.nom);
+  }
+
+  disableReturn(): void {
+    if (this.already == true) {
+      this.platform.backButton.subscribeWithPriority(9999, () => {
+        // do nothing
+        }
+      );
+    }
   }
 
   connect(): void {
@@ -60,10 +72,6 @@ export class ConnectPage implements OnInit {
         }
       }
     });
-  }
-
-  ngOnInit() {
-    this.selectsql();
   }
 
 }
