@@ -4,6 +4,7 @@ import { Injectable } from '@angular/core';
 import { SQLite, SQLiteObject } from '@ionic-native/sqlite/ngx';
 import { SQLitePorter } from '@ionic-native/sqlite-porter/ngx';
 import { HttpClient } from '@angular/common/http';
+import { promise } from 'selenium-webdriver';
 
 @Injectable({
   providedIn: 'root'
@@ -45,15 +46,22 @@ export class SqlService {
       });
   }
 
-  setNom(nom: string): void {
-    this.db.executeSql('INSERT INTO user (nom, lastConnect) VALUES (?, 1)', [nom])
+  setProfil(nom: string, update: boolean): void {
+    if (update) {
+      this.db.executeSql('UPDATE users SET lastConnect = 0 WHERE lastConnect = 1', [])
+        .catch(
+          e => alert(JSON.stringify(e))
+        );
+    }
+
+    this.db.executeSql('INSERT INTO users (nom, lastConnect) VALUES (?, 1)', [nom])
       .catch(
         e => alert(JSON.stringify(e))
       );
   }
 
-  getUser() {
-    return this.db.executeSql('SELECT * FROM USER WHERE lastConnect = 1', [])
+  getUser(): Promise<any> {
+    return this.db.executeSql('SELECT * FROM users WHERE LastConnect = 1', [])
       .then((res) => {
         return res;
       })
@@ -62,8 +70,8 @@ export class SqlService {
       });
   }
 
-  getAllUser() {
-    return this.db.executeSql('SELECT * FROM USER', [])
+  getAllUser(): Promise<any> {
+    return this.db.executeSql('SELECT * FROM users', [])
       .then((res) => {
         return res;
       })

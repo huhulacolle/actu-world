@@ -15,6 +15,7 @@ export class ConnectPage implements OnInit {
   tests: any;
   nom: string;
   already: boolean;
+  update = true;
 
   constructor(
     private sql: SqlService,
@@ -38,7 +39,7 @@ export class ConnectPage implements OnInit {
   }
 
   insertsql(): void {
-    this.sql.setNom(this.nom);
+    this.sql.setProfil(this.nom, this.update);
   }
 
   disableReturn(): void {
@@ -47,6 +48,7 @@ export class ConnectPage implements OnInit {
         // do nothing
         }
       );
+      this.update = false;
     }
   }
 

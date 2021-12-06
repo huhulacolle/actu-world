@@ -11,7 +11,7 @@ CREATE TABLE IF NOT EXISTS favoris (
   PRIMARY KEY (idUser)
 );
 
-CREATE TABLE IF NOT EXISTS user (
+CREATE TABLE IF NOT EXISTS users (
   id INTEGER NOT NULL,
   nom varchar(50) NOT NULL,
   lastConnect INTEGER NOT NULL,
