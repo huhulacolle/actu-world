@@ -1,9 +1,9 @@
 /* eslint-disable eqeqeq */
 /* eslint-disable @typescript-eslint/dot-notation */
 import { Component, OnInit } from '@angular/core';
-import { Platform, ToastController } from '@ionic/angular';
+import { Platform } from '@ionic/angular';
 import { SqlService } from '../sql.service';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-connect',
@@ -12,24 +12,21 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class ConnectPage implements OnInit {
 
-  tests: any;
+  verification: any;
   nom: string;
   already: boolean;
-  update = true;
+  testbool = false;
+  tests: any;
+
 
   constructor(
     private sql: SqlService,
     private platform: Platform,
     private router: Router,
-    private route: ActivatedRoute,
-    private toastController: ToastController
   ) { }
 
   ngOnInit() {
     this.selectsql();
-    this.route.params.subscribe(params => {
-			this.already = JSON.parse(params['already']);
-		});
     this.disableReturn();
   }
 
@@ -39,7 +36,7 @@ export class ConnectPage implements OnInit {
   }
 
   insertsql(): void {
-    this.sql.setProfil(this.nom, this.update);
+    this.sql.setProfil(this.nom);
   }
 
   disableReturn(): void {
@@ -48,7 +45,6 @@ export class ConnectPage implements OnInit {
         // do nothing
         }
       );
-      this.update = false;
     }
   }
 
@@ -66,14 +62,24 @@ export class ConnectPage implements OnInit {
   }
 
   selectsql(): void {
-    this.sql.getUser().then((data) => {
-      this.tests = [];
+    this.sql.getAllUser().then((data) => {
+      this.verification = [];
       if (data.rows.length > 0) {
         for (let i = 0; i < data.rows.length; i++) {
-          this.tests.push(data.rows.item(i));
+          this.verification.push(data.rows.item(i));
         }
       }
     });
+  }
+
+  test(): void {
+    this.sql.getUser().then((data) => {
+      this.tests = [];
+      for (let i = 0; i < data.rows.length; i++) {
+        this.tests.push(data.rows.item(i));
+      }
+    });
+    this.testbool = true;
   }
 
 }

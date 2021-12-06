@@ -12,5 +12,21 @@
     </ion-item>
     <br>
     <ion-button (click)="setNom(nomValue.value)">connecter</ion-button>
+    <ion-button (click)="test()">test</ion-button>
+  </div>
+  <div *ngIf="testbool">
+    <table>
+      <tr *ngFor="let test of tests">
+        <td>
+          {{test.id}}
+        </td>
+        <td>
+          {{test.nom}}
+        </td>
+        <td>
+          {{test.lastConnect}}
+        </td>
+      </tr>
+    </table>
   </div>
 </ion-content>

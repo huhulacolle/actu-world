@@ -20,7 +20,7 @@ const routes: Routes = [
     loadChildren: () => import('./search/search.module').then( m => m.SearchPageModule)
   },
   {
-    path: 'connect/:already',
+    path: 'connect',
     loadChildren: () => import('./connect/connect.module').then( m => m.ConnectPageModule)
   },
   {

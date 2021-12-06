@@ -32,7 +32,7 @@ export class ProfilsPage implements OnInit {
   }
 
   add(): void {
-    this.router.navigate(['connect/false']);
+    this.router.navigate(['connect']);
   }
 
 }

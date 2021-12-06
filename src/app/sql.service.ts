@@ -46,13 +46,11 @@ export class SqlService {
       });
   }
 
-  setProfil(nom: string, update: boolean): void {
-    if (update) {
-      this.db.executeSql('UPDATE users SET lastConnect = 0 WHERE lastConnect = 1', [])
-        .catch(
-          e => alert(JSON.stringify(e))
-        );
-    }
+  setProfil(nom: string): void {
+      // this.db.executeSql('UPDATE users SET lastConnect = 0 WHERE lastConnect = 1', [])
+      //   .catch(
+      //     e => alert(JSON.stringify(e))
+      //   );
 
     this.db.executeSql('INSERT INTO users (nom, lastConnect) VALUES (?, 1)', [nom])
       .catch(

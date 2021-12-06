@@ -53,7 +53,7 @@ export class AppComponent implements OnInit {
       this.getUser();
       this.sql.getUser().then((data) => {
         if (!data.rows.length) {
-          this.router.navigate(['connect/true']);
+          this.router.navigate(['connect']);
         }
       });
     }, 3000);
