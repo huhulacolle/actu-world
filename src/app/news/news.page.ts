@@ -23,7 +23,6 @@ export class NewsPage implements OnInit {
     ) { }
 
   ngOnInit() {
-    this.loading();
     this.getNews();
     window.screen.orientation.lock('portrait');
   }
@@ -35,16 +34,11 @@ export class NewsPage implements OnInit {
     }, 2000);
   }
 
-  loading(): void {
-    setTimeout(() => {
-      this.content = true;
-    }, 2000);
-  }
-
   getNews(): void {
     this.news.getNews().subscribe(
       data => {
         this.articles = data.articles;
       });
+      this.content = true;
   }
 }

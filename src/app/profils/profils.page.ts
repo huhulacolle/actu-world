@@ -16,7 +16,6 @@ export class ProfilsPage implements OnInit {
   constructor(private sql: SqlService,  private loadingController: LoadingController, private router: Router) { }
 
   ngOnInit() {
-    this.loading();
     this.getUser();
   }
 
@@ -29,16 +28,11 @@ export class ProfilsPage implements OnInit {
         }
       }
     });
+    this.content = true;
   }
 
   add(): void {
     this.router.navigate(['connect/false']);
-  }
-
-  loading(): void {
-    setTimeout(() => {
-      this.content = true;
-    }, 500);
   }
 
 }
