@@ -46,30 +46,15 @@ export class SqlService {
       });
   }
 
-  setProfil(nom: string): void {
-      // this.db.executeSql('UPDATE users SET lastConnect = 0 WHERE lastConnect = 1', [])
-      //   .catch(
-      //     e => alert(JSON.stringify(e))
-      //   );
+  // testinsert(): void {
+  //   this.db.executeSql('INSERT INTO users (nom, lastConnect) VALUES (?, 1)', [])
+  //   .catch(
+  //     e => alert(JSON.stringify(e))
+  //   );
+  // }
 
-    this.db.executeSql('INSERT INTO users (nom, lastConnect) VALUES (?, 1)', [nom])
-      .catch(
-        e => alert(JSON.stringify(e))
-      );
-  }
-
-  getUser(): Promise<any> {
-    return this.db.executeSql('SELECT * FROM users WHERE LastConnect = 1', [])
-      .then((res) => {
-        return res;
-      })
-      .catch((e) => {
-        alert(JSON.stringify(e));
-      });
-  }
-
-  getAllUser(): Promise<any> {
-    return this.db.executeSql('SELECT * FROM users', [])
+  testsql(): Promise<any> {
+    return this.db.executeSql('SELECT * FROM favoris', [])
       .then((res) => {
         return res;
       })

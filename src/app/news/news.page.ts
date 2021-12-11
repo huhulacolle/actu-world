@@ -1,9 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Router, RouterLink } from '@angular/router';
-import { LoadingController } from '@ionic/angular';
 import { Article } from '../article';
 import { NewsService } from '../news.service';
-import { SqlService } from '../sql.service';
 
 @Component({
   selector: 'app-news',
@@ -17,14 +14,10 @@ export class NewsPage implements OnInit {
 
   constructor(
     private news: NewsService,
-    private sql: SqlService,
-    private router: Router,
-    private loadingController: LoadingController
     ) { }
 
   ngOnInit() {
     this.getNews();
-    window.screen.orientation.lock('portrait');
   }
 
   refresh(event): void {
@@ -38,6 +31,7 @@ export class NewsPage implements OnInit {
     this.news.getNews().subscribe(
       data => {
         this.articles = data.articles;
+        console.log(this.articles);
       });
       this.content = true;
   }

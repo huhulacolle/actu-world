@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Article } from '../article';
+import { SqlService } from '../sql.service';
 
 @Component({
   selector: 'app-favorite',
@@ -7,7 +9,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FavoritePage implements OnInit {
 
-  constructor() { }
+  favoris: Article[];
+
+  constructor(private sql: SqlService) { }
+
+  testbd(): void {
+    this.sql.testsql()
+      .then(data => {
+        this.favoris = data;
+      })
+      .catch(e => {
+        alert(JSON.stringify(e));
+      });
+      alert(this.favoris);
+  }
 
   ngOnInit() {
   }
