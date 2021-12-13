@@ -1,9 +1,34 @@
-<ion-header>
+<ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>Search</ion-title>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-card-header>
+      <ion-card-title>Search</ion-card-title>
+    </ion-card-header>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  <h1>Hello ceci est une page de recherche </h1>
+
+  <ion-toolbar>
+    <ion-searchbar (keyup.enter)="getSearch(search.value)" showCancelButton="focus" class="searchbar" type="search" #search></ion-searchbar>
+  </ion-toolbar>
+
+  <div *ngIf="content">
+    <div *ngFor="let article of articles">
+      <ion-card href={{article.url}}>
+        <img src={{article.urlToImage}} />
+        <ion-card-header>
+          <ion-card-subtitle>{{article.source.name}}</ion-card-subtitle>
+          <ion-card-title>{{article.title}}</ion-card-title>
+        </ion-card-header>
+
+        <ion-card-content>
+          {{article.description}}
+          <strong><u>Lire la suite</u></strong>
+        </ion-card-content>
+      </ion-card>
+    </div>
+  </div>
 </ion-content>
