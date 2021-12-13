@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Article } from '../article';
 import { NewsService } from '../news.service';
 
@@ -14,6 +15,7 @@ export class NewsPage implements OnInit {
 
   constructor(
     private news: NewsService,
+    private router: Router
     ) { }
 
   ngOnInit() {
@@ -25,6 +27,10 @@ export class NewsPage implements OnInit {
       this.getNews();
       event.target.complete();
     }, 2000);
+  }
+
+  search(): void {
+    this.router.navigate(['search']);
   }
 
   getNews(): void {
