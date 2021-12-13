@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 import { Injectable } from '@angular/core';
 import { SQLite, SQLiteObject } from '@ionic-native/sqlite/ngx';
 import { SQLitePorter } from '@ionic-native/sqlite-porter/ngx';
@@ -52,10 +53,17 @@ export class SqlService {
   }
 
   setFav(url: string, urlToImage: string, source: string, title: string, description: string): void {
-    this.db.executeSql('INSERT INTO favoris VALUES (?, ?, ?, ?, ?);', [url, urlToImage, source, title, description])
-      .catch(
-        e => alert(JSON.stringify(e))
-      );
+    this.db.executeSql('INSERT INTO favoris (url, urlToImage, source, title, description) VALUES (?, ?, ?, ?, ?);', [url, urlToImage, source, title, description])
+      .catch(e => {
+        alert(JSON.stringify(e));
+      });
+  }
+
+  deleteFav(id: number): void {
+    this.db.executeSql('DELETE FROM favoris WHERE id = ?', [id])
+      .catch(e => {
+        alert(JSON.stringify(e));
+      });
   }
 
 }

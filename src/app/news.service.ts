@@ -18,7 +18,7 @@ export class NewsService {
     return this.http.get(`${API_URL}/top-headlines?country=fr&language=fr&apiKey=${API_KEY}`);
   }
 
-  getSearch(q:string) : Observable<Data> {
+  getSearch(q: string): Observable<Data> {
     return this.http.get(`${API_URL}/everything?q=${q}&language=fr&apiKey=${API_KEY}`);
   }
 }

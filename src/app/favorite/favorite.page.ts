@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { Article } from '../article';
 import { SqlService } from '../sql.service';
 
 @Component({
@@ -9,7 +8,7 @@ import { SqlService } from '../sql.service';
 })
 export class FavoritePage implements OnInit {
 
-  users: any;
+  favoris: any;
   content = false;
   error = false;
 
@@ -21,10 +20,10 @@ export class FavoritePage implements OnInit {
 
   getFav(): void {
     this.sql.getFav().then((data) => {
-      this.users = [];
+      this.favoris = [];
       if (data.rows.length > 0) {
         for (let i = 0; i < data.rows.length; i++) {
-          this.users.push(data.rows.item(i));
+          this.favoris.push(data.rows.item(i));
         }
         this.content = true;
       }
@@ -33,5 +32,12 @@ export class FavoritePage implements OnInit {
         this.error = true;
       }
     });
+  }
+
+  test(id: number): void {
+    // alert(id);
+    this.sql.deleteFav(id);
+    this.favoris = null;
+    this.getFav();
   }
 }
