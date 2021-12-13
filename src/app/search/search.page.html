@@ -1,18 +1,10 @@
 <ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-buttons slot="start">
-      <ion-menu-button></ion-menu-button>
-    </ion-buttons>
-    <ion-card-header>
-      <ion-card-title>Search</ion-card-title>
-    </ion-card-header>
-  </ion-toolbar>
 </ion-header>
 
 <ion-content>
 
   <ion-toolbar>
-    <ion-searchbar (keyup.enter)="getSearch(search.value)" showCancelButton="focus" class="searchbar" type="search" #search></ion-searchbar>
+    <ion-searchbar (keyup.enter)="getSearch(search.value)" showCancelButton="always" (ionCancel)="back()" class="searchbar" type="search" #search></ion-searchbar>
   </ion-toolbar>
 
   <div *ngIf="content">
