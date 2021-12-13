@@ -1,0 +1,1 @@
+cordova-res android --copy --skip-config

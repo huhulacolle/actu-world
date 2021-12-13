@@ -12,12 +12,12 @@ export class NewsPage implements OnInit {
   articles: Article[];
   content = false;
 
-  constructor(private news: NewsService) { }
+  constructor(
+    private news: NewsService,
+    ) { }
 
   ngOnInit() {
-    this.loading();
     this.getNews();
-    window.screen.orientation.lock('portrait');
   }
 
   refresh(event): void {
@@ -27,16 +27,12 @@ export class NewsPage implements OnInit {
     }, 2000);
   }
 
-  loading(): void {
-    setTimeout(() => {
-      this.content = true;
-    }, 2000);
-  }
-
   getNews(): void {
     this.news.getNews().subscribe(
       data => {
         this.articles = data.articles;
+        console.log(this.articles);
       });
+      this.content = true;
   }
 }

@@ -6,10 +6,17 @@ import { Component } from '@angular/core';
   styleUrls: ['app.component.scss'],
 })
 export class AppComponent {
+
   public appPages = [
     { title: 'News', url: '/news', icon: 'document' },
     { title: 'Favoris', url: '/favorite', icon: 'heart' },
     { title: 'Recherche', url: '/search', icon: 'search' },
   ];
-  constructor() {}
+
+  user: any;
+
+  constructor() {
+    window.screen.orientation.lock('portrait');
+  }
+
 }

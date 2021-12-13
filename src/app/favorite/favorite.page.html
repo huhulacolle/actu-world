@@ -7,7 +7,15 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  favoris 
-  <br>
-  en construction
+  <ion-button (click)="select()">select</ion-button>
+  <ion-button (click)="testUser()">test</ion-button>
+  <ion-button (click)="insertdb()">insert</ion-button>
+  <table *ngIf="content">
+    <tr *ngFor="let user of users">
+      <td>
+        {{user.description}}
+        test
+      </td>
+    </tr>
+  </table>
 </ion-content>
