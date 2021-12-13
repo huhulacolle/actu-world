@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Article } from '../article';
 import { NewsService } from '../news.service';
+import { SqlService } from '../sql.service';
 
 @Component({
   selector: 'app-news',
@@ -15,11 +16,21 @@ export class NewsPage implements OnInit {
 
   constructor(
     private news: NewsService,
-    private router: Router
+    private router: Router,
+    private sql: SqlService
     ) { }
 
   ngOnInit() {
     this.getNews();
+  }
+
+  favoris(url: string, urlToImage: string, source: string, title: string, description: string): void {
+    // console.log(url);
+    // console.log(urlToImage);
+    // console.log(source);
+    // console.log(title);
+    // console.log(description);
+    this.sql.setFav(url, urlToImage, source, title, description);
   }
 
   refresh(event): void {

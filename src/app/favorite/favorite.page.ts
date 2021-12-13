@@ -11,15 +11,16 @@ export class FavoritePage implements OnInit {
 
   users: any;
   content = false;
+  error = false;
 
   constructor(private sql: SqlService) { }
 
-  select(): void {
-    alert(JSON.stringify(this.users));
+  ngOnInit() {
+    this.getFav();
   }
 
-  testUser(): void {
-    this.sql.testsql().then((data) => {
+  getFav(): void {
+    this.sql.getFav().then((data) => {
       this.users = [];
       if (data.rows.length > 0) {
         for (let i = 0; i < data.rows.length; i++) {
@@ -27,14 +28,10 @@ export class FavoritePage implements OnInit {
         }
         this.content = true;
       }
+      else {
+        // alert('rien');
+        this.error = true;
+      }
     });
   }
-
-  insertdb(): void {
-    this.sql.testinsert();
-  }
-
-  ngOnInit() {
-  }
-
 }

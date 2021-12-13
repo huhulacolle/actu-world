@@ -7,15 +7,11 @@ import { Location } from '@angular/common';
   templateUrl: './search.page.html',
   styleUrls: ['./search.page.scss'],
 })
-export class SearchPage implements OnInit {
+export class SearchPage {
 
   articles: any;
   content = false;
   constructor(private news: NewsService, private location: Location) { }
-
-  ngOnInit() {
-  }
-
 
   getSearch(q: string): void {
     this.news.getSearch(q).subscribe(
