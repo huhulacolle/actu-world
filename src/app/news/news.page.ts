@@ -17,7 +17,7 @@ export class NewsPage implements OnInit {
   constructor(
     private news: NewsService,
     private router: Router,
-    private sql: SqlService
+    // private sql: SqlService
     ) { }
 
   ngOnInit() {
@@ -30,7 +30,12 @@ export class NewsPage implements OnInit {
     // console.log(source);
     // console.log(title);
     // console.log(description);
-    this.sql.setFav(url, urlToImage, source, title, description);
+    // this.sql.setFav(url, urlToImage, source, title, description);
+    alert('long press');
+  }
+
+  click(): void {
+    alert('click');
   }
 
   refresh(event): void {
@@ -48,7 +53,6 @@ export class NewsPage implements OnInit {
     this.news.getNews().subscribe(
       data => {
         this.articles = data.articles;
-        console.log(this.articles);
       });
       this.content = true;
   }

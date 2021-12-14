@@ -35,9 +35,9 @@ export class FavoritePage implements OnInit {
   }
 
   test(id: number): void {
-    // alert(id);
     this.sql.deleteFav(id);
     this.favoris = null;
     this.getFav();
   }
+
 }
