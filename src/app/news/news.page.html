@@ -28,8 +28,8 @@
   </ion-refresher>
   <div *ngIf="content">
     <div *ngFor="let article of articles">
-      <ion-card>
-        <a href={{article.url}}><img src={{article.urlToImage}}/></a>
+      <ion-card href={{article.url}}>
+        <img src={{article.urlToImage}}/>
         <ion-card-header>
           <ion-card-subtitle>{{article.source.name}}</ion-card-subtitle>
           <ion-card-title>{{article.title}}</ion-card-title>
