@@ -25,12 +25,10 @@ export class NewsPage implements OnInit {
   }
 
   favoris(url: string, urlToImage: string, source: string, title: string, description: string): void {
-    // console.log(url);
-    // console.log(urlToImage);
-    // console.log(source);
-    // console.log(title);
-    // console.log(description);
     // this.sql.setFav(url, urlToImage, source, title, description);
+  }
+
+  longpress(): void {
     alert('long press');
   }
 
