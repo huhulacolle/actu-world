@@ -51,7 +51,7 @@ export class NewsPage implements OnInit {
     this.news.getNews().subscribe(
       data => {
         this.articles = data.articles;
+        this.content = true;
       });
-      this.content = true;
   }
 }
