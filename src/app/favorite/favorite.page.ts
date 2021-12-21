@@ -9,12 +9,19 @@ import { SqlService } from '../sql.service';
 export class FavoritePage implements OnInit {
 
   favoris: any;
+  content = false;
   error = false;
 
   constructor(private sql: SqlService) { }
 
   ngOnInit() {
-    this.getFav();
+    this.loading();
+  }
+
+  loading(): void {
+    setTimeout(() => {
+      this.getFav();
+    }, 1000);
   }
 
   getFav(): void {
@@ -24,6 +31,7 @@ export class FavoritePage implements OnInit {
         for (let i = 0; i < data.rows.length; i++) {
           this.favoris.push(data.rows.item(i));
         }
+        this.content = true;
       }
       else {
         // alert('rien');
