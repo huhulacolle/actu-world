@@ -17,7 +17,7 @@ export class NewsPage implements OnInit {
   constructor(
     private news: NewsService,
     private router: Router,
-    // private sql: SqlService
+    private sql: SqlService
     ) { }
 
   ngOnInit() {
@@ -25,7 +25,7 @@ export class NewsPage implements OnInit {
   }
 
   favoris(url: string, urlToImage: string, source: string, title: string, description: string): void {
-    // this.sql.setFav(url, urlToImage, source, title, description);
+    this.sql.setFav(url, urlToImage, source, title, description);
   }
 
   longpress(): void {
