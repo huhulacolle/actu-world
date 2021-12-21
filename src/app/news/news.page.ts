@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { ModalController } from '@ionic/angular';
 import { Article } from '../article';
 import { NewsService } from '../news.service';
-import { SqlService } from '../sql.service';
+import { SelectedNewPage } from '../selected-new/selected-new.page';
 
 @Component({
   selector: 'app-news',
@@ -17,23 +18,26 @@ export class NewsPage implements OnInit {
   constructor(
     private news: NewsService,
     private router: Router,
-    private sql: SqlService
+    public modalController: ModalController,
     ) { }
 
   ngOnInit() {
     this.getNews();
   }
 
-  favoris(url: string, urlToImage: string, source: string, title: string, description: string): void {
-    this.sql.setFav(url, urlToImage, source, title, description);
-  }
-
-  longpress(): void {
-    alert('long press');
-  }
-
-  click(): void {
-    alert('click');
+  async selectedNews(url: string, urlToImage: string, source: string, title: string, description: string, content: string) {
+    const modal = await this.modalController.create({
+      component: SelectedNewPage,
+      componentProps: {
+        url,
+        urlToImage,
+        source,
+        title,
+        description,
+        content
+      }
+    });
+    return await modal.present();
   }
 
   refresh(event): void {

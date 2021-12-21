@@ -11,7 +11,7 @@ export class SearchPage {
 
   articles: any;
   content = false;
-  constructor(private news: NewsService, private navCtrl: NavController ) { }
+  constructor(private news: NewsService, private navCtrl: NavController) { }
 
   getSearch(q: string): void {
     this.news.getSearch(q).subscribe(

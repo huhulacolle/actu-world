@@ -52,8 +52,8 @@ export class SqlService {
       });
   }
 
-  setFav(url: string, urlToImage: string, source: string, title: string, description: string): void {
-    this.db.executeSql('INSERT INTO favoris (url, urlToImage, source, title, description) VALUES (?, ?, ?, ?, ?);', [url, urlToImage, source, title, description])
+  setFav(url: string, urlToImage: string, source: string, title: string, description: string, content: string): void {
+    this.db.executeSql('INSERT INTO favoris (url, urlToImage, source, title, description, content) VALUES (?, ?, ?, ?, ?, ?);', [url, urlToImage, source, title, description, content])
       .catch(e => {
         alert(JSON.stringify(e));
       });
