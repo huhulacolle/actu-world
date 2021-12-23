@@ -35,9 +35,6 @@ export class SqlService {
     this.http.get('assets/script.sql', { responseType: 'text'})
       .subscribe(sql => {
         this.sqlitePorter.importSqlToDb(this.db, sql)
-          .then(() => {
-            // alert('bdd crée');
-          })
           .catch(
             e => alert(JSON.stringify(e))
           );
@@ -46,6 +43,14 @@ export class SqlService {
 
   getFav(): Promise<any> {
     return this.db.executeSql('SELECT * FROM favoris', [])
+      .then(res => res)
+      .catch(e => {
+        alert(JSON.stringify(e));
+      });
+  }
+
+  isFav(title: string): Promise<any> {
+    return this.db.executeSql('SELECT * FROM favoris WHERE title = ?', [title])
       .then(res => res)
       .catch(e => {
         alert(JSON.stringify(e));

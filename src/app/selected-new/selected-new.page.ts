@@ -16,6 +16,8 @@ export class SelectedNewPage implements OnInit {
   description: string;
   content: string;
 
+  icon: string;
+
   constructor(
     private sql: SqlService,
     private modalController: ModalController,
@@ -23,6 +25,24 @@ export class SelectedNewPage implements OnInit {
   ) { }
 
   ngOnInit() {
+    this.isFav();
+  }
+
+  isFav(): void {
+    const isFav = [];
+    this.sql.isFav(this.title).then((data) => {
+      if (data.rows.length > 0) {
+        for (let i = 0; i < data.rows.length; i++) {
+          isFav.push(data.rows.item(i));
+        }
+      }
+    });
+    if (JSON.stringify(isFav) === '[]') {
+      this.icon = 'star-outline';
+    }
+    else {
+      this.icon = 'star';
+    }
   }
 
   favoris(): void {
