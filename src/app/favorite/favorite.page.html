@@ -18,8 +18,8 @@
 
   <div *ngIf="content">
     <div *ngFor="let favori of favoris">
-      <ion-card>
-        <a href={{favori.url}}><img src={{favori.urlToImage}} /></a>
+      <ion-card (click)="selectedNews(favori.url, favori.urlToImage, favori.source.name, favori.title, favori.description, favori.content)">
+        <ion-img [src]="favori.urlToImage"></ion-img>
         <ion-card-header>
           <ion-card-subtitle>{{favori.source.name}}</ion-card-subtitle>
           <ion-card-title>{{favori.title}}</ion-card-title>
@@ -27,9 +27,7 @@
 
         <ion-card-content>
           {{favori.description}}
-          <strong><u>Lire la suite</u></strong>
         </ion-card-content>
-        <ion-button (click)="test(favori.id)">Supprimer</ion-button>
       </ion-card>
     </div>
   </div>

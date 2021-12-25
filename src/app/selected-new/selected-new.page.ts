@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ModalController, ToastController } from '@ionic/angular';
+import { AlertController, ModalController, ToastController } from '@ionic/angular';
 import { SqlService } from '../sql.service';
 
 @Component({
@@ -15,34 +15,29 @@ export class SelectedNewPage implements OnInit {
   title: string;
   description: string;
   content: string;
-
+  alert: any;
   icon: string;
 
   constructor(
     private sql: SqlService,
     private modalController: ModalController,
-    private toastController: ToastController
+    private toastController: ToastController,
+    private alertController: AlertController
   ) { }
 
   ngOnInit() {
-    this.isFav();
   }
 
   isFav(): void {
-    const isFav = [];
     this.sql.isFav(this.title).then((data) => {
       if (data.rows.length > 0) {
-        for (let i = 0; i < data.rows.length; i++) {
-          isFav.push(data.rows.item(i));
-        }
+        this.deleteFav();
+      }
+      else {
+        this.favoris();
       }
     });
-    if (JSON.stringify(isFav) === '[]') {
-      this.icon = 'star-outline';
-    }
-    else {
-      this.icon = 'star';
-    }
+
   }
 
   favoris(): void {
@@ -50,7 +45,51 @@ export class SelectedNewPage implements OnInit {
     this.message();
   }
 
-  async message() {
+  deleteFav(): void {
+    this.sql.deleteFav(this.title);
+    this.delmessage();
+  }
+
+  async presentAlert(): Promise<void> {
+
+    this.sql.isFav(this.title).then(async (data) => {
+      if (data.rows.length > 0) {
+            this.alert = await this.alertController.create({
+          message: 'Voulez vous ajoutez supprimer le favoris ?',
+          buttons: [
+            {
+              text: 'Oui',
+              handler: () => {
+                this.deleteFav();
+              }
+            },
+            {
+              text: 'Non'
+            }
+          ]
+        });
+      }
+      else {
+          this.alert = await this.alertController.create({
+          message: 'Voulez vous ajoutez l\'article en favoris ?',
+          buttons: [
+            {
+              text: 'Oui',
+              handler: () => {
+                this.favoris();
+              }
+            },
+            {
+              text: 'Non'
+            }
+          ]
+        });
+      }
+      await this.alert.present();
+    });
+  }
+
+  async message(): Promise<void> {
     const toast = await this.toastController.create({
       message: 'Your settings have been saved.',
       duration: 3000,
@@ -58,7 +97,15 @@ export class SelectedNewPage implements OnInit {
     toast.present();
   }
 
-  back() {
+  async delmessage(): Promise<void> {
+    const toast = await this.toastController.create({
+      message: 'Your settings have been removed.',
+      duration: 3000,
+    });
+    toast.present();
+  }
+
+  back(): void {
     this.modalController.dismiss({
       dismissed: true
     });

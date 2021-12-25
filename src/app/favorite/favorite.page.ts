@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ModalController } from '@ionic/angular';
+import { SelectedNewPage } from '../selected-new/selected-new.page';
 import { SqlService } from '../sql.service';
 
 @Component({
@@ -12,7 +14,10 @@ export class FavoritePage implements OnInit {
   content = false;
   error = false;
 
-  constructor(private sql: SqlService) { }
+  constructor(
+    private sql: SqlService,
+    private modalController: ModalController,
+    ) { }
 
   ngOnInit() {
     this.loading();
@@ -22,6 +27,21 @@ export class FavoritePage implements OnInit {
     setTimeout(() => {
       this.getFav();
     }, 1000);
+  }
+
+  async selectedNews(url: string, urlToImage: string, source: string, title: string, description: string, content: string) {
+    const modal = await this.modalController.create({
+      component: SelectedNewPage,
+      componentProps: {
+        url,
+        urlToImage,
+        source,
+        title,
+        description,
+        content
+      }
+    });
+    return await modal.present();
   }
 
   getFav(): void {
@@ -38,12 +58,6 @@ export class FavoritePage implements OnInit {
         this.error = true;
       }
     });
-  }
-
-  test(id: number): void {
-    this.sql.deleteFav(id);
-    this.favoris = null;
-    this.getFav();
   }
 
 }

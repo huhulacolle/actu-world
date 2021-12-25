@@ -18,7 +18,7 @@ export class NewsPage implements OnInit {
   constructor(
     private news: NewsService,
     private router: Router,
-    public modalController: ModalController,
+    private modalController: ModalController,
     ) { }
 
   ngOnInit() {

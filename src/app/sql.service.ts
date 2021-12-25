@@ -64,8 +64,8 @@ export class SqlService {
       });
   }
 
-  deleteFav(id: number): void {
-    this.db.executeSql('DELETE FROM favoris WHERE id = ?', [id])
+  deleteFav(title: string): void {
+    this.db.executeSql('DELETE FROM favoris WHERE title = ?', [title])
       .catch(e => {
         alert(JSON.stringify(e));
       });
