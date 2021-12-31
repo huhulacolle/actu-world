@@ -15,7 +15,7 @@ export class SelectedNewPage implements OnInit {
   title: string;
   description: string;
   content: string;
-  alert: any;
+  alert: HTMLIonAlertElement;
   icon: string;
 
   constructor(
@@ -91,7 +91,7 @@ export class SelectedNewPage implements OnInit {
 
   async message(): Promise<void> {
     const toast = await this.toastController.create({
-      message: 'Your settings have been saved.',
+      message: 'Favoris ajoutés.',
       duration: 3000,
     });
     toast.present();
@@ -99,7 +99,7 @@ export class SelectedNewPage implements OnInit {
 
   async delmessage(): Promise<void> {
     const toast = await this.toastController.create({
-      message: 'Your settings have been removed.',
+      message: 'Favoris supprimés.',
       duration: 3000,
     });
     toast.present();
@@ -107,7 +107,8 @@ export class SelectedNewPage implements OnInit {
 
   back(): void {
     this.modalController.dismiss({
-      dismissed: true
+      // la variable sert uniquement pour la page des favoris
+      test: true
     });
   }
 }
