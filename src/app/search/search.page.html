@@ -9,7 +9,7 @@
 
   <div *ngIf="content">
     <div *ngFor="let article of articles">
-      <ion-card href={{article.url}}>
+      <ion-card (click)="selectedNews(article.url, article.urlToImage, article.source.name, article.title, article.description, article.content)">
         <img src={{article.urlToImage}} />
         <ion-card-header>
           <ion-card-subtitle>{{article.source.name}}</ion-card-subtitle>

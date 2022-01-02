@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { NewsService } from '../news.service';
-import { NavController } from '@ionic/angular';
+import { ModalController, NavController } from '@ionic/angular';
+import { SelectedNewPage } from '../selected-new/selected-new.page';
 
 @Component({
   selector: 'app-search',
@@ -11,7 +12,11 @@ export class SearchPage {
 
   articles: any;
   content = false;
-  constructor(private news: NewsService, private navCtrl: NavController) { }
+  constructor(
+    private news: NewsService,
+    private navCtrl: NavController,
+    private modalController: ModalController,
+    ) { }
 
   getSearch(q: string): void {
     this.news.getSearch(q).subscribe(
@@ -24,6 +29,21 @@ export class SearchPage {
 
   back(): void {
     this.navCtrl.back();
+  }
+
+  async selectedNews(url: string, urlToImage: string, source: string, title: string, description: string, content: string) {
+    const modal = await this.modalController.create({
+      component: SelectedNewPage,
+      componentProps: {
+        url,
+        urlToImage,
+        source,
+        title,
+        description,
+        content
+      }
+    });
+    return await modal.present();
   }
 
 
