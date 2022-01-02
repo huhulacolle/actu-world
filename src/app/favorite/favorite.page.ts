@@ -13,7 +13,6 @@ export class FavoritePage implements OnInit {
   favoris: any;
   content = false;
   error = false;
-  test = false;
 
   constructor(
     private sql: SqlService,
@@ -22,9 +21,6 @@ export class FavoritePage implements OnInit {
 
   ngOnInit() {
     this.loading();
-    if (this.test === true) {
-      alert('ça marche');
-    }
   }
 
   loading(): void {
@@ -46,11 +42,14 @@ export class FavoritePage implements OnInit {
       }
     });
 
-    modal.onDidDismiss().then(data => {
-      this.test = data.data;
+    modal.onDidDismiss().then((dataReturned) => {
+      if (dataReturned !== null) {
+        if (dataReturned) {
+          this.favoris = null;
+          this.getFav();
+        }
+      }
     });
-
-    alert(this.test);
 
     return await modal.present();
   }

@@ -15,10 +15,10 @@
     <br>
     <ion-spinner></ion-spinner>
   </div>
-
   <div *ngIf="content">
     <div *ngFor="let favori of favoris">
-      <ion-card (click)="selectedNews(favori.url, favori.urlToImage, favori.source.name, favori.title, favori.description, favori.content)">
+      <ion-card
+        (click)="selectedNews(favori.url, favori.urlToImage, favori.source.name, favori.title, favori.description, favori.content)">
         <ion-img [src]="favori.urlToImage"></ion-img>
         <ion-card-header>
           <ion-card-subtitle>{{favori.source.name}}</ion-card-subtitle>

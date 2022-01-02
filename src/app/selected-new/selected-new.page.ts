@@ -106,9 +106,6 @@ export class SelectedNewPage implements OnInit {
   }
 
   back(): void {
-    this.modalController.dismiss({
-      // la variable sert uniquement pour la page des favoris
-      test: true
-    });
+    this.modalController.dismiss(true);
   }
 }
