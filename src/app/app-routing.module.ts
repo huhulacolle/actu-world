@@ -18,7 +18,11 @@ const routes: Routes = [
   {
     path: 'search',
     loadChildren: () => import('./search/search.module').then( m => m.SearchPageModule)
+  },  {
+    path: 'selected-new',
+    loadChildren: () => import('./selected-new/selected-new.module').then( m => m.SelectedNewPageModule)
   }
+
 
 ];
 

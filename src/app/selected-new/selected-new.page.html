@@ -1,0 +1,24 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="" (click)="back()"></ion-back-button>
+    </ion-buttons>
+    <ion-buttons slot="end">
+      <ion-button (click)="presentAlert()">
+        <ion-icon slot="icon-only" ios="add-outline" md="star-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-card-header>
+      <ion-card-title>{{source}}</ion-card-title>
+    </ion-card-header>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-img [src]="urlToImage"></ion-img>
+  <h1>{{title}}</h1>
+  {{content}}
+  <ion-button [href]="url">lire la suite</ion-button>
+
+</ion-content>

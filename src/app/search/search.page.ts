@@ -1,21 +1,17 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { NewsService } from '../news.service';
-import { Location } from '@angular/common';
+import { NavController } from '@ionic/angular';
 
 @Component({
   selector: 'app-search',
   templateUrl: './search.page.html',
   styleUrls: ['./search.page.scss'],
 })
-export class SearchPage implements OnInit {
+export class SearchPage {
 
   articles: any;
   content = false;
-  constructor(private news: NewsService, private location: Location) { }
-
-  ngOnInit() {
-  }
-
+  constructor(private news: NewsService, private navCtrl: NavController) { }
 
   getSearch(q: string): void {
     this.news.getSearch(q).subscribe(
@@ -27,7 +23,7 @@ export class SearchPage implements OnInit {
   }
 
   back(): void {
-    this.location.back();
+    this.navCtrl.back();
   }
 
 

@@ -3,19 +3,37 @@
     <ion-buttons slot="start">
       <ion-menu-button></ion-menu-button>
     </ion-buttons>
+    <ion-card-header>
+      <ion-card-title>Favoris</ion-card-title>
+    </ion-card-header>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-button (click)="select()">select</ion-button>
-  <ion-button (click)="testUser()">test</ion-button>
-  <ion-button (click)="insertdb()">insert</ion-button>
-  <table *ngIf="content">
-    <tr *ngFor="let user of users">
-      <td>
-        {{user.description}}
-        test
-      </td>
-    </tr>
-  </table>
+
+  <div *ngIf="!(content || error)" style="text-align: center;">
+    <br>
+    <ion-spinner></ion-spinner>
+  </div>
+  <div *ngIf="content">
+    <div *ngFor="let favori of favoris">
+      <ion-card
+        (click)="selectedNews(favori.url, favori.urlToImage, favori.source.name, favori.title, favori.description, favori.content)">
+        <ion-img [src]="favori.urlToImage"></ion-img>
+        <ion-card-header>
+          <ion-card-subtitle>{{favori.source.name}}</ion-card-subtitle>
+          <ion-card-title>{{favori.title}}</ion-card-title>
+        </ion-card-header>
+
+        <ion-card-content>
+          {{favori.description}}
+        </ion-card-content>
+      </ion-card>
+    </div>
+  </div>
+
+  <div id="container" *ngIf="error">
+    Vous n'avez aucuns favoris
+  </div>
+
 </ion-content>

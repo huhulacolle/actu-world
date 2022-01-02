@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { ModalController } from '@ionic/angular';
 import { Article } from '../article';
 import { NewsService } from '../news.service';
+import { SelectedNewPage } from '../selected-new/selected-new.page';
 
 @Component({
   selector: 'app-news',
@@ -15,11 +17,27 @@ export class NewsPage implements OnInit {
 
   constructor(
     private news: NewsService,
-    private router: Router
+    private router: Router,
+    private modalController: ModalController,
     ) { }
 
   ngOnInit() {
     this.getNews();
+  }
+
+  async selectedNews(url: string, urlToImage: string, source: string, title: string, description: string, content: string) {
+    const modal = await this.modalController.create({
+      component: SelectedNewPage,
+      componentProps: {
+        url,
+        urlToImage,
+        source,
+        title,
+        description,
+        content
+      }
+    });
+    return await modal.present();
   }
 
   refresh(event): void {
@@ -37,8 +55,7 @@ export class NewsPage implements OnInit {
     this.news.getNews().subscribe(
       data => {
         this.articles = data.articles;
-        console.log(this.articles);
+        this.content = true;
       });
-      this.content = true;
   }
 }
