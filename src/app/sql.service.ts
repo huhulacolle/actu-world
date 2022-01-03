@@ -42,7 +42,7 @@ export class SqlService {
   }
 
   getFav(): Promise<any> {
-    return this.db.executeSql('SELECT * FROM favoris', [])
+    return this.db.executeSql('SELECT * FROM favoris ORDER BY id DESC', [])
       .then(res => res)
       .catch(e => {
         alert(JSON.stringify(e));
