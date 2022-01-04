@@ -7,12 +7,14 @@ import { IonicModule } from '@ionic/angular';
 import { SelectedNewPageRoutingModule } from './selected-new-routing.module';
 
 import { SelectedNewPage } from './selected-new.page';
+import { QRCodeModule } from 'angularx-qrcode';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
+    QRCodeModule,
     SelectedNewPageRoutingModule
   ],
   declarations: [SelectedNewPage]

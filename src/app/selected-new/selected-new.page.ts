@@ -18,6 +18,7 @@ export class SelectedNewPage {
   content: string;
   alert: HTMLIonAlertElement;
   icon: string;
+  testqr = false;
 
   constructor(
     private sql: SqlService,
@@ -96,7 +97,7 @@ export class SelectedNewPage {
   async message(): Promise<void> {
     const toast = await this.toastController.create({
       message: 'Favoris ajoutés.',
-      duration: 3000,
+      duration: 2000,
     });
     toast.present();
   }
@@ -104,19 +105,18 @@ export class SelectedNewPage {
   async delmessage(): Promise<void> {
     const toast = await this.toastController.create({
       message: 'Favoris supprimés.',
-      duration: 3000,
+      duration: 2000,
     });
     toast.present();
   }
 
   async copyMessage(): Promise<void> {
     const toast = await this.toastController.create({
-      message: 'URL de l\'article copié dans presse-papier',
+      message: 'URL de l\'article copié dans le presse-papier',
       duration: 2000,
     });
     toast.present();
   }
-
 
   back(): void {
     this.modalController.dismiss(true);
