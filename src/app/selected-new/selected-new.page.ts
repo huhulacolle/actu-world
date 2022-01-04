@@ -1,13 +1,14 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { AlertController, ModalController, ToastController } from '@ionic/angular';
 import { SqlService } from '../sql.service';
+import { Clipboard } from '@awesome-cordova-plugins/clipboard/ngx';
 
 @Component({
   selector: 'app-selected-new',
   templateUrl: './selected-new.page.html',
   styleUrls: ['./selected-new.page.scss'],
 })
-export class SelectedNewPage implements OnInit {
+export class SelectedNewPage {
 
   url: string;
   urlToImage: string;
@@ -22,10 +23,13 @@ export class SelectedNewPage implements OnInit {
     private sql: SqlService,
     private modalController: ModalController,
     private toastController: ToastController,
-    private alertController: AlertController
+    private alertController: AlertController,
+    private clipboard: Clipboard,
   ) { }
 
-  ngOnInit() {
+  copy(): void {
+    this.clipboard.copy(this.url);
+    this.copyMessage();
   }
 
   isFav(): void {
@@ -55,7 +59,7 @@ export class SelectedNewPage implements OnInit {
     this.sql.isFav(this.title).then(async (data) => {
       if (data.rows.length > 0) {
             this.alert = await this.alertController.create({
-          message: 'Voulez vous ajoutez supprimer le favoris ?',
+          message: 'Voulez vous supprimer le favoris ?',
           buttons: [
             {
               text: 'Oui',
@@ -104,6 +108,15 @@ export class SelectedNewPage implements OnInit {
     });
     toast.present();
   }
+
+  async copyMessage(): Promise<void> {
+    const toast = await this.toastController.create({
+      message: 'URL de l\'article copié dans presse-papier',
+      duration: 2000,
+    });
+    toast.present();
+  }
+
 
   back(): void {
     this.modalController.dismiss(true);
