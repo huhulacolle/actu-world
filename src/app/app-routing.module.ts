@@ -22,11 +22,7 @@ const routes: Routes = [
   {
     path: 'selected-new',
     loadChildren: () => import('./selected-new/selected-new.module').then( m => m.SelectedNewPageModule)
-  },  {
-    path: 'qrcode',
-    loadChildren: () => import('./qrcode/qrcode.module').then( m => m.QrcodePageModule)
   },
-
 
 
 ];
