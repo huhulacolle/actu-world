@@ -30,7 +30,7 @@ export class SelectedNewPage {
 
   copy(): void {
     this.clipboard.copy(this.url);
-    this.copyMessage();
+    this.message('copy');
   }
 
   isFav(): void {
@@ -47,12 +47,12 @@ export class SelectedNewPage {
 
   favoris(): void {
     this.sql.setFav(this.url, this.urlToImage, this.source, this.title, this.description, this.content);
-    this.message();
+    this.message('add');
   }
 
   deleteFav(): void {
     this.sql.deleteFav(this.title);
-    this.delmessage();
+    this.message('delete');
   }
 
   async presentAlert(): Promise<void> {
@@ -94,27 +94,34 @@ export class SelectedNewPage {
     });
   }
 
-  async message(): Promise<void> {
-    const toast = await this.toastController.create({
-      message: 'Favoris ajoutés.',
-      duration: 2000,
-    });
-    toast.present();
-  }
+  async message(msg: string): Promise<void> {
+    let toast:  HTMLIonToastElement;
+    
+    switch (msg) {
+      case 'add':
+        toast = await this.toastController.create({
+          message: 'Favoris ajoutés.',
+          duration: 2000,
+        });
 
-  async delmessage(): Promise<void> {
-    const toast = await this.toastController.create({
-      message: 'Favoris supprimés.',
-      duration: 2000,
-    });
-    toast.present();
-  }
+        break;
 
-  async copyMessage(): Promise<void> {
-    const toast = await this.toastController.create({
-      message: 'URL de l\'article copié dans le presse-papier',
-      duration: 2000,
-    });
+      case 'delete':
+        toast = await this.toastController.create({
+          message: 'Favoris effacés',
+          duration: 2000,
+        });
+
+        break;
+
+      case 'copy':
+        toast = await this.toastController.create({
+          message: 'URL de l\'article copié dans le presse-papier',
+          duration: 2000,
+        });
+
+        break;
+    }
     toast.present();
   }
 
