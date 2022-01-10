@@ -18,7 +18,7 @@ export class SelectedNewPage {
   content: string;
   alert: HTMLIonAlertElement;
   icon: string;
-  testqr = false;
+  qrcode = false;
 
   constructor(
     private sql: SqlService,
@@ -116,6 +116,15 @@ export class SelectedNewPage {
       duration: 2000,
     });
     toast.present();
+  }
+
+  setQRCode(): void {
+    if (this.qrcode) {
+      this.qrcode = false;
+    }
+    else  {
+      this.qrcode = true;
+    }
   }
 
   back(): void {
