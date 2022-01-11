@@ -9,7 +9,9 @@ export class AppComponent {
 
   public appPages = [
     { title: 'News', url: '/news', icon: 'document' },
-    { title: 'Favoris', url: '/favorite', icon: 'heart' }
+    { title: 'Favoris', url: '/favorite', icon: 'heart' },
+    { title: 'QRCode', url: '/qrcode', icon: 'qr-code' },
+    { title: 'Paramètres', url: 'settings', icon: 'cog'}
   ];
 
   user: any;
