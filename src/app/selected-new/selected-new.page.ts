@@ -3,6 +3,7 @@ import { AlertController, ModalController, ToastController } from '@ionic/angula
 import { SqlService } from '../sql.service';
 import { Clipboard } from '@awesome-cordova-plugins/clipboard/ngx';
 import { Article } from '../article';
+import { SocialSharing } from '@awesome-cordova-plugins/social-sharing/ngx';
 
 @Component({
   selector: 'app-selected-new',
@@ -28,6 +29,7 @@ export class SelectedNewPage {
     private toastController: ToastController,
     private alertController: AlertController,
     private clipboard: Clipboard,
+    private socialSharing: SocialSharing
   ) { }
 
   copy(): void {
@@ -143,6 +145,10 @@ export class SelectedNewPage {
       this.data = JSON.stringify(data);
       this.qrcode = true;
     }
+  }
+
+  share(): void {
+    this.socialSharing.share(null, null, null, this.url);
   }
 
   back(): void {
