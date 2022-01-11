@@ -4,7 +4,7 @@
 <ion-content>
 
   <ion-toolbar>
-    <ion-searchbar (keyup.enter)="getSearch(search.value)" showCancelButton="always" (ionCancel)="back()" class="searchbar" type="search" #search></ion-searchbar>
+    <ion-searchbar (keyup.enter)="getSearch(search.value)" showCancelButton="always" (ionCancel)="back()" class="searchbar" type="search" placeholder="Rechercher" #search></ion-searchbar>
   </ion-toolbar>
 
   <div *ngIf="content">
