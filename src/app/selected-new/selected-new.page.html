@@ -4,7 +4,8 @@
       <ion-back-button defaultHref="" (click)="back()"></ion-back-button>
     </ion-buttons>
     <ion-buttons slot="end">
-      <ion-button (click)="presentAlert()">
+      <!-- <ion-button (click)="presentAlert()"> -->
+      <ion-button>
         <ion-icon slot="icon-only" ios="add-outline" md="star-outline"></ion-icon>
       </ion-button>
     </ion-buttons>
@@ -13,6 +14,15 @@
     </ion-card-header>
   </ion-toolbar>
 </ion-header>
+
+<ion-segment value="app" *ngIf="qrcode">
+  <ion-segment-button (click)="segment = 0" value="app">
+    <ion-label >Via Application</ion-label>
+  </ion-segment-button>
+  <ion-segment-button (click)="segment = 1" value="url">
+    <ion-label>via URL</ion-label>
+  </ion-segment-button>
+</ion-segment>
 
 <ion-content>
 
@@ -39,10 +49,15 @@
       </ion-fab-list>
     </ion-fab>
   </ng-container>
-
+  
   <ng-container *ngIf="qrcode">
     <div class="container" (click)="setQRCode()">
-      <qrcode class="container" [qrdata]="data" [width]="384"></qrcode>
+      <ng-container *ngIf="segment === 0">
+        <qrcode class="container" [qrdata]="data" [width]="384"></qrcode>
+      </ng-container>
+      <ng-container *ngIf="segment === 1">
+        <qrcode class="container" [qrdata]="url" [width]="384"></qrcode>
+      </ng-container>
     </div>
   </ng-container>
 

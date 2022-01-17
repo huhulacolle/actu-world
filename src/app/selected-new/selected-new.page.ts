@@ -22,6 +22,7 @@ export class SelectedNewPage {
   alert: HTMLIonAlertElement;
   icon: string;
   qrcode = false;
+  segment: number;
 
   constructor(
     private sql: SqlService,
@@ -31,6 +32,10 @@ export class SelectedNewPage {
     private clipboard: Clipboard,
     private socialSharing: SocialSharing
   ) { }
+
+  test(): void {
+    console.log(this.segment);
+  }
 
   copy(): void {
     this.clipboard.copy(this.url);
@@ -144,11 +149,12 @@ export class SelectedNewPage {
       };
       this.data = JSON.stringify(data);
       this.qrcode = true;
+      this.segment = 0;
     }
   }
 
   share(): void {
-    this.socialSharing.share(null, null, null, this.url);
+    this.socialSharing.share(this.url);
   }
 
   back(): void {
