@@ -33,10 +33,6 @@ export class SelectedNewPage {
     private socialSharing: SocialSharing
   ) { }
 
-  test(): void {
-    console.log(this.segment);
-  }
-
   copy(): void {
     this.clipboard.copy(this.url);
     this.message('copy');
