@@ -1,8 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { AlertController, ModalController, ToastController } from '@ionic/angular';
 import { SqlService } from '../sql.service';
 import { Clipboard } from '@awesome-cordova-plugins/clipboard/ngx';
-import { Article } from '../article';
 import { SocialSharing } from '@awesome-cordova-plugins/social-sharing/ngx';
 
 @Component({
@@ -10,7 +9,7 @@ import { SocialSharing } from '@awesome-cordova-plugins/social-sharing/ngx';
   templateUrl: './selected-new.page.html',
   styleUrls: ['./selected-new.page.scss'],
 })
-export class SelectedNewPage {
+export class SelectedNewPage implements OnInit {
 
   url: string;
   urlToImage: string;
@@ -32,6 +31,12 @@ export class SelectedNewPage {
     private clipboard: Clipboard,
     private socialSharing: SocialSharing
   ) { }
+
+  ngOnInit(): void {
+    if (this.content.lastIndexOf('[') > -1) {
+      this.content = this.content.substring(0, this.content.lastIndexOf('['));
+    }
+  }
 
   copy(): void {
     this.clipboard.copy(this.url);

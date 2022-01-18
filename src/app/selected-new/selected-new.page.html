@@ -27,9 +27,19 @@
 
   <ng-container *ngIf="!qrcode">
     <ion-img [src]="urlToImage"></ion-img>
-    <h1>{{title}}</h1>
-    {{content}}
-    <ion-button [href]="url">lire la suite</ion-button>
+    <ion-card-content>
+      <ion-item>
+        <h1>{{title}}</h1>
+      </ion-item>
+      <br>
+      <div style="text-align: justify;">
+        <h2>{{content}}</h2>
+      </div>
+      <br>
+      <div class="ion-text-end">
+        <ion-button [href]="url">lire la suite</ion-button>
+      </div>
+    </ion-card-content>
 
     <ion-fab vertical="bottom" horizontal="end" slot="fixed">
       <ion-fab-button>
@@ -49,6 +59,8 @@
     </ion-fab>
   </ng-container>
   
+
+
   <ng-container *ngIf="qrcode">
     <div class="container" (click)="setQRCode()">
       <ng-container *ngIf="segment === 0">
