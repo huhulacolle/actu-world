@@ -51,6 +51,9 @@ export class SelectedNewPage {
   }
 
   favoris(): void {
+    if (!this.source) {
+      this.source = 'QRCode';
+    }
     this.sql.setFav(this.url, this.urlToImage, this.source, this.title, this.description, this.content);
     this.message('add');
   }
