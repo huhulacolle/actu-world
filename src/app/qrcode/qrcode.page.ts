@@ -65,8 +65,6 @@ export class QrcodePage implements OnInit {
         this.selectedNews(this.data.url, this.data.urlToImage, this.data.source.name,
           this.data.title, this.data.description, this.data.content);
 
-      } else {
-        alert('NO DATA FOUND!');
       }
 
     } else {
