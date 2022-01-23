@@ -23,7 +23,7 @@ export class QrcodePage implements OnInit {
     this.startScanner();
   }
 
-  async selectedNews(url: string, urlToImage: string, source: string, title: string, description: string, content: string) {
+  async selectedNews(url: string, urlToImage: string, source: string, title: string, description: string, content: string): Promise<void> {
     const modal = await this.modalController.create({
       component: SelectedNewPage,
       componentProps: {
@@ -39,7 +39,7 @@ export class QrcodePage implements OnInit {
   }
 
   async checkPermission(): Promise<boolean> {
-    return new Promise(async (resolve, reject) => {
+    return new Promise(async (resolve) => {
       const status = await BarcodeScanner.checkPermission({ force: true });
       if (status.granted) {
         resolve(true);
