@@ -1,14 +1,13 @@
 export interface Sources {
     id?: number;
     name?: string;
-    description?: String;
-    url?: String;
-    category?: String;
-    language?: String;
-    country?: String;
+    description?: string;
+    url?: string;
+    category?: string;
+    language?: string;
+    country?: string;
 }
 
-export interface dataSources {
+export interface DataSources {
     source: Sources;
-      
 }
