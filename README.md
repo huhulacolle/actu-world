@@ -1,10 +1,25 @@
-cordova-res android --copy --skip-config
+Actu World (Android) : installation du projet en local
+=============
 
+ ### **prérequis :** 
+- Node JS -> https://nodejs.org/fr/
+-  Android Studio -> https://developer.android.com/studio
+- Ionic CLI -> ```npm install -g @ionic/cli```
 
-actu-world\android\app\src\main\AndroidManifest.xml
+### **Installation :**
+- cloner le projet à l'aide de Git ou d'un client Git : <br>
+```git clone https://github.com/huhulacolle/actu-world/```
+- Ouvrir le terminal dans le répertoire du projet et écrire : <br>
+```npm install```
 
-
-<?xml version="1.0" encoding="utf-8"?>
+### **Ouvrir l'application web en mode dev (déconseillé) :**
+```ionic serve```
+### **généré l'application nativement pour Android :**
+- générer un projet Android Studio native pour lancer l'application sur émulateur ou généré un fichier apk : <br>
+```ionic capacitor sync Android``` <br>
+- naviguer dans le répertoire suivant : <br> ```actu-world\android\app\src\main\AndroidManifest.xml``` <br>
+- tout remplacé par : <br>
+```<?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     package="io.actuworld.com">
@@ -48,3 +63,8 @@ actu-world\android\app\src\main\AndroidManifest.xml
     <uses-sdk tools:overrideLibrary="com.google.zxing.client.android" />
     <uses-permission android:name="android.permission.INTERNET" />
 </manifest>
+```
+
+### **Inséré l'icône de l'application dans le projet Android Studio (Optionnel) :** <br>
+- installer "Cordova-Res" -> ```npm install -g cordova-res``` <br>
+- écrire la commande : ```cordova-res android --copy --skip-config```
