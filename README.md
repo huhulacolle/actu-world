@@ -12,9 +12,9 @@ Actu World (Android) : installation du projet en local
 - Ouvrir le terminal dans le répertoire du projet et écrire : <br>
 ```npm install```
 
-### **Ouvrir l'application web en mode dev (déconseillé) :**
+### **Ouvrir l'application sur le navigateur (déconseillé) :**
 ```ionic serve```
-### **généré l'application nativement pour Android :**
+### **généré projet Android Studio via Ionic :**
 - générer un projet Android Studio native pour lancer l'application sur émulateur ou généré un fichier apk : <br>
 ```ionic capacitor sync Android``` <br>
 - naviguer dans le répertoire suivant : <br> ```actu-world\android\app\src\main\AndroidManifest.xml``` <br>
