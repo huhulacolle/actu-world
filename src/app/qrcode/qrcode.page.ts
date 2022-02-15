@@ -61,14 +61,17 @@ export class QrcodePage implements OnInit {
 
       if (result.hasContent) {
         this.scanActive = false;
-        this.data = JSON.parse(result.content);
-        this.selectedNews(this.data.url, this.data.urlToImage, this.data.source.name,
-          this.data.title, this.data.description, this.data.content);
-
+        try {
+          this.data = JSON.parse(result.content);
+          this.selectedNews(this.data.url, this.data.urlToImage, this.data.source.name,
+            this.data.title, this.data.description, this.data.content);
+        } catch (error) {
+          alert('Le QRCode est incorrect ou a mal été lu');
+        }
       }
 
     } else {
-      alert('Erreur : autorisations de l\'appareil photo non accordé');
+      alert('Erreur : autorisations de l\'appareil photo non accordées');
     }
   }
 
