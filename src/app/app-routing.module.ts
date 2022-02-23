@@ -9,27 +9,24 @@ const routes: Routes = [
   },
   {
     path: 'news',
-    loadChildren: () => import('./news/news.module').then( m => m.NewsPageModule)
+    loadChildren: () => import('./pages/news/news.module').then( m => m.NewsPageModule)
   },
   {
     path: 'favorite',
-    loadChildren: () => import('./favorite/favorite.module').then( m => m.FavoritePageModule)
+    loadChildren: () => import('./pages/favorite/favorite.module').then( m => m.FavoritePageModule)
   },
   {
     path: 'search',
-    loadChildren: () => import('./search/search.module').then( m => m.SearchPageModule)
+    loadChildren: () => import('./pages/search/search.module').then( m => m.SearchPageModule)
   },
   {
     path: 'selected-new',
-    loadChildren: () => import('./selected-new/selected-new.module').then( m => m.SelectedNewPageModule)
-  },  {
-    path: 'qrcode',
-    loadChildren: () => import('./qrcode/qrcode.module').then( m => m.QrcodePageModule)
+    loadChildren: () => import('./pages/selected-new/selected-new.module').then( m => m.SelectedNewPageModule)
   },
   {
-    path: 'settings',
-    loadChildren: () => import('./settings/settings.module').then( m => m.SettingsPageModule)
-  },
+    path: 'qrcode',
+    loadChildren: () => import('./pages/qrcode/qrcode.module').then( m => m.QrcodePageModule)
+  }
 
 
 

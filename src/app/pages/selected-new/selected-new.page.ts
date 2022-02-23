@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AlertController, ModalController, ToastController } from '@ionic/angular';
-import { SqlService } from '../sql.service';
+import { SqlService } from 'src/app/services/sql.service';
 import { Clipboard } from '@awesome-cordova-plugins/clipboard/ngx';
 import { SocialSharing } from '@awesome-cordova-plugins/social-sharing/ngx';
 

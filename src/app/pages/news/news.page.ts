@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ModalController } from '@ionic/angular';
-import { NewsService } from '../news.service';
+import { NewsService } from 'src/app/services/news.service';
 import { SelectedNewPage } from '../selected-new/selected-new.page';
 
 @Component({

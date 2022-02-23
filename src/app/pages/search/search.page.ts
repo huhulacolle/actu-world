@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { NewsService } from '../news.service';
+import { NewsService } from 'src/app/services/news.service';
 import { ModalController, NavController, PickerController, PickerOptions } from '@ionic/angular';
 import { SelectedNewPage } from '../selected-new/selected-new.page';
 

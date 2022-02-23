@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ModalController } from '@ionic/angular';
 import { SelectedNewPage } from '../selected-new/selected-new.page';
-import { SqlService } from '../sql.service';
+import { SqlService } from 'src/app/services/sql.service';
 
 @Component({
   selector: 'app-favorite',
