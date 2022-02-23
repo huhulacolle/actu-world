@@ -5,6 +5,7 @@
 
   <ion-toolbar>
     <ion-searchbar (keyup.enter)="getSearch(search.value)" showCancelButton="always" (ionCancel)="back()" class="searchbar" type="search" placeholder="Rechercher" #search></ion-searchbar>
+    <ion-button (click)="columnDate()">Dates</ion-button>
   </ion-toolbar>
 
   <div *ngIf="content">
@@ -15,10 +16,8 @@
           <ion-card-subtitle>{{article.source.name}}</ion-card-subtitle>
           <ion-card-title>{{article.title}}</ion-card-title>
         </ion-card-header>
-
         <ion-card-content>
           {{article.description}}
-          <strong><u>Lire la suite</u></strong>
         </ion-card-content>
       </ion-card>
     </div>

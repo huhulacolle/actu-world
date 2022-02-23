@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { BarcodeScanner } from '@capacitor-community/barcode-scanner';
 import { ModalController } from '@ionic/angular';
-import { Article } from '../article';
 import { SelectedNewPage } from '../selected-new/selected-new.page';
 
 
@@ -13,7 +12,7 @@ import { SelectedNewPage } from '../selected-new/selected-new.page';
 export class QrcodePage implements OnInit {
 
   scanActive = false;
-  data: Article;
+  data: any;
 
   constructor(
     private modalController: ModalController,

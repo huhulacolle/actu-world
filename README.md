@@ -22,7 +22,7 @@ Actu World (Android) : installation du projet en local
 ```<?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="io.actuworld.com">
+    package="com.actuworld.fr">
 
     <application
         android:hardwareAccelerated="true"
@@ -35,7 +35,7 @@ Actu World (Android) : installation du projet en local
 
         <activity
             android:configChanges="orientation|keyboardHidden|keyboard|screenSize|locale|smallestScreenSize|screenLayout|uiMode"
-            android:name="io.actuworld.com.MainActivity"
+            android:name="com.actuworld.fr.MainActivity"
             android:label="@string/title_activity_main"
             android:theme="@style/AppTheme.NoActionBarLaunch"
             android:launchMode="singleTask">

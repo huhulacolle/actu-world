@@ -1,7 +1,7 @@
 import { CapacitorConfig } from '@capacitor/cli';
 
 const config: CapacitorConfig = {
-  appId: 'io.actuworld.com',
+  appId: 'com.actuworld.fr',
   appName: 'ActuWorld',
   webDir: 'www',
   bundledWebRuntime: false
