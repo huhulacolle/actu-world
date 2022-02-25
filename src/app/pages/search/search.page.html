@@ -4,8 +4,11 @@
 <ion-content>
 
   <ion-toolbar>
-    <ion-searchbar (keyup.enter)="getSearch(search.value)" showCancelButton="always" (ionCancel)="back()" class="searchbar" type="search" placeholder="Rechercher" #search></ion-searchbar>
-    <ion-button (click)="columnDate()">Dates</ion-button>
+    <ion-searchbar (keyup.enter)="getSearch(search.value, column.value)" showCancelButton="always" (ionCancel)="back()" class="searchbar" type="search" placeholder="Rechercher" #search></ion-searchbar>
+    <div class="ion-text-end">
+      <ion-button (click)="columnSources()" color="light"> {{column.title}}</ion-button>
+    </div>
+
   </ion-toolbar>
 
   <div *ngIf="content">

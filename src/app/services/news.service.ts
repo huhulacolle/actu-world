@@ -15,8 +15,11 @@ export class NewsService {
     return this.http.get('https://newsapi.org/v2/top-headlines?country=fr&language=fr&apiKey=' + API_KEY);
   }
 
-  getSearch(q: string): Observable<any> {
-    return this.http.get('https://newsapi.org/v2/everything?q=' + q + '&language=fr&apiKey=' +  API_KEY);
+  getSearch(q: string, source: string): Observable<any> {
+    if (source == null) {
+      return this.http.get('https://newsapi.org/v2/everything?q=' + q + '&language=fr&apiKey=' +  API_KEY);
+    }
+    return this.http.get('https://newsapi.org/v2/everything?q=' + q + '&sources=' + source + '&language=fr&apiKey=' +  API_KEY);
   }
 
   getSources(): Promise<any> {

@@ -13,7 +13,10 @@ export class SearchPage implements OnInit {
   articles: any;
   content = false;
   sources: any[] = [];
-  animals: string[] = ['Tiger', 'Lion', 'Elephant', 'Fox', 'Wolf'];
+  column = {
+    title: 'Article',
+    value: null
+  };
   constructor(
     private news: NewsService,
     private navCtrl: NavController,
@@ -37,6 +40,12 @@ export class SearchPage implements OnInit {
 
     getColumnSources(): any[] {
       const options: any[] = [];
+      options.push(
+        {
+          text: 'Tous',
+          value: null
+        }
+      );
       this.sources.forEach(x => {
         options.push(
           {
@@ -48,15 +57,7 @@ export class SearchPage implements OnInit {
       return options;
     }
 
-    getColumnDates(){
-      const options = [];
-      this.animals.forEach(x => {
-        options.push({text:x,value:x});
-      });
-      return options;
-    }
-
-    async columnDate(): Promise<void> {
+    async columnSources(): Promise<void> {
       const options: PickerOptions = {
         buttons: [
           {
@@ -66,7 +67,14 @@ export class SearchPage implements OnInit {
           {
             text:'Ok',
             handler:(value: any) => {
-              console.log(value);
+              if (value.date.text === 'Tous') {
+                this.column.title = 'Article';
+                this.column.value = null;
+              }
+              else {
+                this.column.title = value.date.text;
+                this.column.value = value.date.value;
+              }
             }
           }
         ],
@@ -80,8 +88,8 @@ export class SearchPage implements OnInit {
       picker.present();
     }
 
-  getSearch(q: string): void {
-    this.news.getSearch(q).subscribe(
+  getSearch(q: string, source: string): void {
+    this.news.getSearch(q, source).subscribe(
       data => {
         this.articles = data.articles;
       }
