@@ -26,9 +26,15 @@ const routes: Routes = [
   {
     path: 'qrcode',
     loadChildren: () => import('./pages/qrcode/qrcode.module').then( m => m.QrcodePageModule)
+  },
+  {
+    path: 'settings',
+    loadChildren: () => import('./pages/settings/settings.module').then( m => m.SettingsPageModule)
+  },
+  {
+    path: 'a-propos',
+    loadChildren: () => import('./pages/settings/a-propos/a-propos.module').then( m => m.AProposPageModule)
   }
-
-
 
 ];
 
