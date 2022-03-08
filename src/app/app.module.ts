@@ -11,6 +11,8 @@ import { SQLite } from '@ionic-native/sqlite/ngx';
 import { SQLitePorter } from '@ionic-native/sqlite-porter/ngx';
 import { Clipboard } from '@awesome-cordova-plugins/clipboard/ngx';
 import { SocialSharing } from '@awesome-cordova-plugins/social-sharing/ngx';
+import { AppVersion } from '@awesome-cordova-plugins/app-version/ngx';
+import { Device } from '@awesome-cordova-plugins/device/ngx';
 
 @NgModule({
   declarations: [AppComponent],
@@ -20,7 +22,8 @@ import { SocialSharing } from '@awesome-cordova-plugins/social-sharing/ngx';
     IonicModule.forRoot(),
     AppRoutingModule,
     HttpClientModule],
-  providers: [SQLite, SQLitePorter, Clipboard, SocialSharing, { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
+  providers: [SQLite, SQLitePorter, AppVersion, Clipboard, SocialSharing,
+    Device, { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
