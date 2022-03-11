@@ -16,7 +16,9 @@ Actu World (Android) : installation du projet en local
 ```ionic serve```
 ### **généré projet Android Studio via Ionic :**
 - générer un projet Android Studio native pour lancer l'application sur émulateur ou généré un fichier apk : <br>
-```ionic capacitor sync Android``` <br>
+```ionic capacitor sync``` <br>
+puis <br>
+```ionic capacitor sync Android``` 
 - naviguer dans le répertoire suivant : <br> ```actu-world\android\app\src\main\AndroidManifest.xml``` <br>
 - tout remplacé par : <br>
 ```<?xml version="1.0" encoding="utf-8"?>

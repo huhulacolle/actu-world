@@ -24,7 +24,7 @@
     "@awesome-cordova-plugins/device": "^5.40.0",
     "@awesome-cordova-plugins/social-sharing": "^5.37.3",
     "@capacitor-community/barcode-scanner": "^2.0.1",
-    "@capacitor/android": "3.4.1",
+    "@capacitor/android": "3.4.3",
     "@capacitor/app": "1.0.6",
     "@capacitor/core": "^3.3.1",
     "@capacitor/haptics": "1.1.3",
