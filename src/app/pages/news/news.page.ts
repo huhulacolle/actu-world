@@ -24,6 +24,10 @@ export class NewsPage implements OnInit {
     this.getNews();
   }
 
+  test(test): void {
+    console.log(test);
+  } 
+
   async selectedNews(url: string, urlToImage: string, source: string, title: string, description: string, content: string) {
     const modal = await this.modalController.create({
       component: SelectedNewPage,
