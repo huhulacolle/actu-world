@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouteReuseStrategy} from '@angular/router';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
 
@@ -13,6 +13,7 @@ import { Clipboard } from '@awesome-cordova-plugins/clipboard/ngx';
 import { SocialSharing } from '@awesome-cordova-plugins/social-sharing/ngx';
 import { AppVersion } from '@awesome-cordova-plugins/app-version/ngx';
 import { Device } from '@awesome-cordova-plugins/device/ngx';
+import { BlagueService } from './services/blague.service';
 
 @NgModule({
     declarations: [AppComponent],
@@ -23,7 +24,12 @@ import { Device } from '@awesome-cordova-plugins/device/ngx';
         HttpClientModule
     ],
     providers: [SQLite, SQLitePorter, AppVersion, Clipboard, SocialSharing,
-        Device, { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
+        Device, { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
+        {
+            provide: HTTP_INTERCEPTORS,
+            useClass: BlagueService,
+            multi: true
+        }],
     bootstrap: [AppComponent]
 })
 export class AppModule {}

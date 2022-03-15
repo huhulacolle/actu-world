@@ -3,7 +3,7 @@
     <ion-buttons slot="start">
       <ion-back-button></ion-back-button>
     </ion-buttons>
-    <ion-title>À propos de</ion-title>
+    <ion-title (click)="easterEgg()">À propos de</ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -22,5 +22,9 @@
   Serial : {{serial}}
   <br>
   <ion-button >Copier</ion-button>
+  
+  <br> <br>
+
+  {{egg?.joke}} <br> {{egg?.answer}}
 
 </ion-content>

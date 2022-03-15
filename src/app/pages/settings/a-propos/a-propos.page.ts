@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AppVersion } from '@awesome-cordova-plugins/app-version/ngx';
 import { Device } from '@awesome-cordova-plugins/device/ngx';
 import { Clipboard } from '@awesome-cordova-plugins/clipboard/ngx';
+import { BlagueService } from 'src/app/services/blague.service';
 
 
 @Component({
@@ -17,8 +18,10 @@ export class AProposPage implements OnInit {
   constructeur = this.device.manufacturer;
   model = this.device.model;
   serial = this.device.serial;
+  tap = 0;
+  egg = null;
 
-  constructor(private appVersion: AppVersion, private device: Device, private clipboard: Clipboard) { }
+  constructor(private appVersion: AppVersion, private device: Device, private clipboard: Clipboard, private blague: BlagueService) { }
 
   ngOnInit() {
     this.getAppName();
@@ -41,7 +44,15 @@ export class AProposPage implements OnInit {
     );
   }
 
-  copy(): void {
-    // this.clipboard.copy(copy);
+  easterEgg(): void {
+    this.tap++;
+    if (this.tap >= 5) {
+      this.blague.getBlagueLimite().subscribe(
+        data => {
+          this.egg = data;
+        }
+      )
+    }
   }
+
 }
