@@ -26,7 +26,9 @@
 <ion-content>
 
   <ng-container *ngIf="!qrcode">
-    <ion-img [src]="urlToImage"></ion-img>
+    <div *ngIf="urlToImage != null">
+      <ion-img [src]="urlToImage"></ion-img>
+    </div>
     <ion-card-content>
       <ion-item>
         <h1>{{title}}</h1>
