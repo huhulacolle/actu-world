@@ -1,6 +1,7 @@
 import { HttpClient, HttpEvent, HttpHandler, HttpRequest } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { IBlague } from '../interfaces/iblague';
 
 @Injectable({
   providedIn: 'root'
@@ -21,7 +22,7 @@ export class BlagueService {
     return next.handle(tokenReq);
   }
 
-  getBlagueLimite(): Observable<any> {
-    return this.http.get('https://www.blagues-api.fr/api/type/dev/random');
+  getBlagueLimite(): Observable<IBlague> {
+    return this.http.get<IBlague>('https://www.blagues-api.fr/api/type/dev/random');
   }
 }

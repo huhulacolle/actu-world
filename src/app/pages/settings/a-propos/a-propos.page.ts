@@ -3,6 +3,7 @@ import { AppVersion } from '@awesome-cordova-plugins/app-version/ngx';
 import { Device } from '@awesome-cordova-plugins/device/ngx';
 import { Clipboard } from '@awesome-cordova-plugins/clipboard/ngx';
 import { BlagueService } from 'src/app/services/blague.service';
+import { IBlague } from 'src/app/interfaces/iblague';
 
 
 @Component({
@@ -19,9 +20,9 @@ export class AProposPage implements OnInit {
   model = this.device.model;
   serial = this.device.serial;
   tap = 0;
-  egg = null;
+  blague: IBlague;
 
-  constructor(private appVersion: AppVersion, private device: Device, private clipboard: Clipboard, private blague: BlagueService) { }
+  constructor(private appVersion: AppVersion, private device: Device, private clipboard: Clipboard, private blagueService: BlagueService) { }
 
   ngOnInit() {
     this.getAppName();
@@ -44,12 +45,12 @@ export class AProposPage implements OnInit {
     );
   }
 
-  easterEgg(): void {
+  secret(): void {
     this.tap++;
     if (this.tap >= 5) {
-      this.blague.getBlagueLimite().subscribe(
+      this.blagueService.getBlagueLimite().subscribe(
         data => {
-          this.egg = data;
+          this.blague = data;
         }
       )
     }
