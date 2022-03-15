@@ -28,7 +28,7 @@
     <div *ngFor="let article of articles">
       <ion-card (click)="selectedNews(article.url, article.urlToImage, article.source.name, article.title, article.description, article.content)">
         <div *ngIf="article.urlToImage == null ; else img">
-          <img src="assets/icon/icon.png">
+          <img src="assets/icon/icon.png" sizes="200">
         </div>
         <ng-template #img>
           <ion-img [src]="article.urlToImage"></ion-img>
