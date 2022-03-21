@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ModalController } from '@ionic/angular';
+import { INews } from 'src/app/interfaces/inews';
 import { NewsService } from 'src/app/services/news.service';
 import { SelectedNewPage } from '../selected-new/selected-new.page';
 
@@ -11,7 +12,7 @@ import { SelectedNewPage } from '../selected-new/selected-new.page';
 })
 export class NewsPage implements OnInit {
 
-  articles: any[];
+  articles: INews[];
   content = false;
 
   constructor(

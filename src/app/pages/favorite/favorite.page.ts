@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ModalController } from '@ionic/angular';
 import { SelectedNewPage } from '../selected-new/selected-new.page';
 import { SqlService } from 'src/app/services/sql.service';
+import { INews } from 'src/app/interfaces/inews';
 
 @Component({
   selector: 'app-favorite',
@@ -10,7 +11,7 @@ import { SqlService } from 'src/app/services/sql.service';
 })
 export class FavoritePage implements OnInit {
 
-  favoris: any;
+  favoris: INews[];
   content = false;
   error = false;
 

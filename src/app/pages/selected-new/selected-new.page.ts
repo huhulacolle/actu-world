@@ -17,7 +17,7 @@ export class SelectedNewPage implements OnInit {
   title: string;
   description: string;
   content: string;
-  data: any;
+  data: string;
   alert: HTMLIonAlertElement;
   icon: string;
   qrcode = false;

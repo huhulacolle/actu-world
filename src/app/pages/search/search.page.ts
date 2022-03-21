@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { NewsService } from 'src/app/services/news.service';
 import { ModalController, NavController, PickerController, PickerOptions } from '@ionic/angular';
 import { SelectedNewPage } from '../selected-new/selected-new.page';
+import { INews } from 'src/app/interfaces/inews';
+import { ISource } from 'src/app/interfaces/isource';
 
 @Component({
   selector: 'app-search',
@@ -10,9 +12,9 @@ import { SelectedNewPage } from '../selected-new/selected-new.page';
 })
 export class SearchPage implements OnInit {
 
-  articles: any;
+  articles: INews;
   content = false;
-  sources: any[] = [];
+  sources: ISource[] = [];
   column = {
     title: 'Article',
     value: null
@@ -38,8 +40,8 @@ export class SearchPage implements OnInit {
       );
     }
 
-    getColumnSources(): any[] {
-      const options: any[] = [];
+    getColumnSources(): Object[] {
+      const options: Object[] = [];
       options.push(
         {
           text: 'Tous',
