@@ -4,6 +4,8 @@ import { Device } from '@awesome-cordova-plugins/device/ngx';
 import { Clipboard } from '@awesome-cordova-plugins/clipboard/ngx';
 import { BlagueService } from 'src/app/services/blague.service';
 import { IBlague } from 'src/app/interfaces/iblague';
+import { EmailComposer, OpenOptions } from 'capacitor-email-composer';
+import { AlertController, ToastController } from '@ionic/angular';
 
 
 @Component({
@@ -22,7 +24,12 @@ export class AProposPage implements OnInit {
   tap = 0;
   blague: IBlague;
 
-  constructor(private appVersion: AppVersion, private device: Device, private clipboard: Clipboard, private blagueService: BlagueService) { }
+  constructor(
+    private appVersion: AppVersion, 
+    private device: Device, 
+    private toastController: ToastController,
+    private blagueService: BlagueService, 
+    private alertController: AlertController) { }
 
   ngOnInit() {
     this.getAppName();
@@ -53,6 +60,64 @@ export class AProposPage implements OnInit {
           this.blague = data;
         }
       )
+    }
+  }
+
+  async problem(): Promise<void> {
+    const alert = await this.alertController.create({
+      message: 'qu\'elle est votre problème ?',
+      inputs: [
+        {
+          name: 'problem',
+          type: 'text'
+        }
+      ],
+      buttons: [
+        {
+          text: 'Annuler'
+        },
+        {
+          text: 'Envoyer',
+          handler: (data) => {
+            this.openEmail(data.problem)
+          }
+        }
+      ]
+    });
+    await alert.present();
+  }
+
+  async openEmail(problem: string): Promise<void> {
+    if (!(problem == null || problem === "")) {
+      const body = problem + " \n \n " + 
+      "Version :" + this.version + " \n" +
+      "Version d'Android : " + this.androidVersion + " \n" +
+      "Constructeur : " + this.constructeur + " \n" +
+      "Modèle : " + this.model + " \n" +
+      "Serial : " + this.serial + " \n";
+      const email: OpenOptions = {
+        to: ["QuestionActuWorld@yopmail.com"],
+        subject: 'Phone Hardware for Debug - Actu World',
+        body: body
+      };
+  
+      if (await EmailComposer.hasAccount()) {
+        EmailComposer.open(email);
+      } else {
+        alert("Erreur : Application mail manquante")
+      }  
+    }
+    else {
+      const alert = await this.alertController.create({
+        message: 'Le champ problème est vide',
+        buttons: [
+          {
+            text: 'Ok'
+          }
+        ]
+      });
+      await alert.present();
+
     }
   }
 

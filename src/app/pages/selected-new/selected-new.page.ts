@@ -72,17 +72,17 @@ export class SelectedNewPage implements OnInit {
 
     this.sql.isFav(this.title).then(async (data) => {
       if (data.rows.length > 0) {
-            this.alert = await this.alertController.create({
+          this.alert = await this.alertController.create({
           message: 'Voulez vous supprimer le favoris ?',
           buttons: [
+            {
+              text: 'Non'
+            },
             {
               text: 'Oui',
               handler: () => {
                 this.deleteFav();
               }
-            },
-            {
-              text: 'Non'
             }
           ]
         });
@@ -92,13 +92,13 @@ export class SelectedNewPage implements OnInit {
           message: 'Voulez vous ajoutez l\'article en favoris ?',
           buttons: [
             {
+              text: 'Non'
+            },
+            {
               text: 'Oui',
               handler: () => {
                 this.favoris();
               }
-            },
-            {
-              text: 'Non'
             }
           ]
         });
