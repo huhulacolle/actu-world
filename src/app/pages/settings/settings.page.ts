@@ -21,13 +21,13 @@ export class SettingsPage {
       message: 'Voulez vous supprimer les données de l\'application ?',
       buttons: [
         {
+          text: 'Non'
+        },
+        {
           text: 'Oui',
           handler: () => {
             this.sql.reset();
           }
-        },
-        {
-          text: 'Non'
         }
       ]
     });
