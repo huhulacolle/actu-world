@@ -12,7 +12,7 @@ import { ISource } from 'src/app/interfaces/isource';
 })
 export class SearchPage implements OnInit {
 
-  articles: INews;
+  articles: any;
   content = false;
   sources: ISource[] = [];
   column = {
@@ -63,7 +63,7 @@ export class SearchPage implements OnInit {
       const options: PickerOptions = {
         buttons: [
           {
-            text: 'Cancel',
+            text: 'Annuler',
             role: 'cancel'
           },
           {

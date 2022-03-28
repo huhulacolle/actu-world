@@ -14,6 +14,7 @@ import { SocialSharing } from '@awesome-cordova-plugins/social-sharing/ngx';
 import { AppVersion } from '@awesome-cordova-plugins/app-version/ngx';
 import { Device } from '@awesome-cordova-plugins/device/ngx';
 import { BlagueService } from './services/blague.service';
+import { AppPreferences } from '@awesome-cordova-plugins/app-preferences/ngx';
 
 @NgModule({
     declarations: [AppComponent],
@@ -24,7 +25,7 @@ import { BlagueService } from './services/blague.service';
         HttpClientModule
     ],
     providers: [SQLite, SQLitePorter, AppVersion, Clipboard, SocialSharing,
-        Device, { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
+        Device, AppPreferences, { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
         {
             provide: HTTP_INTERCEPTORS,
             useClass: BlagueService,
