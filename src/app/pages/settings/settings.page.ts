@@ -24,12 +24,12 @@ export class SettingsPage implements OnInit {
   // ]
 
   selectLang = [
-    { text: 'fr', value: 'fr' },
-    { text: 'en', value: 'en' },
-    { text: 'es', value: 'es' },
-    { text: 'it', value: 'it' },
-    { text: 'pt', value: 'pt' },
-    { text: 'de', value: 'de' }
+    { text: 'Français', value: 'fr' },
+    { text: 'Anglais', value: 'en' },
+    { text: 'Espagnol', value: 'es' },
+    { text: 'Italien', value: 'it' },
+    { text: 'Portugais', value: 'pt' },
+    { text: 'Allemands', value: 'de' }
   ]
 
   constructor(
@@ -62,7 +62,7 @@ export class SettingsPage implements OnInit {
         {
           text:'Ok',
           handler:(value:any) => {
-            this.lang = value.lang.text;
+            this.lang = value.lang.value;
             this.appPref.store('lang', this.lang);
             this.messageRestart();
           }
