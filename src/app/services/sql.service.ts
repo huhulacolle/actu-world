@@ -71,7 +71,7 @@ export class SqlService {
       });
   }
 
-  reset(): void  {
+  resetFav(): void  {
     this.db.executeSql('DELETE FROM FAVORIS', [])
       .catch(e => {
         alert(JSON.stringify(e));

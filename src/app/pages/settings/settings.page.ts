@@ -111,7 +111,7 @@ export class SettingsPage implements OnInit {
         {
           text: 'Oui',
           handler: () => {
-            this.sql.reset();
+            this.sql.resetFav();
           }
         }
       ]
@@ -121,7 +121,7 @@ export class SettingsPage implements OnInit {
 
   async messageRestart(): Promise<void> {
     const alert = await this.alertController.create({
-      message: 'La modification de ce paramètre demande le redemarrage de l\'application ?',
+      message: 'La modification de ce paramètre require le redemarrage de l\'application ?',
       buttons: [
         {
           text: 'redemarrer maintenant',
