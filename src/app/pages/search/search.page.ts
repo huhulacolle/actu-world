@@ -40,6 +40,7 @@ export class SearchPage implements OnInit {
       );
     }
 
+    // récupère les différents journaux disponibles via l'api
     getColumnSources(): Object[] {
       const options: Object[] = [];
       options.push(
@@ -59,6 +60,7 @@ export class SearchPage implements OnInit {
       return options;
     }
 
+    // affiche les journaux
     async columnSources(): Promise<void> {
       const options: PickerOptions = {
         buttons: [

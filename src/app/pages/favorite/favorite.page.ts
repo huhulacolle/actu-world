@@ -55,6 +55,7 @@ export class FavoritePage implements OnInit {
     return await modal.present();
   }
 
+  // récupère les derniers news mis en favoris et les inclus dans la variable favoris 
   getFav(): void {
     this.sql.getFav().then((data) => {
       this.favoris = [];
@@ -64,8 +65,8 @@ export class FavoritePage implements OnInit {
         }
         this.content = true;
       }
+      // affiche un message d'erreur si aucuns favoris n'a été trouvé
       else {
-        // alert('rien');
         this.error = true;
       }
     });

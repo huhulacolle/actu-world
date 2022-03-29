@@ -12,7 +12,9 @@ import { SelectedNewPage } from '../selected-new/selected-new.page';
 })
 export class NewsPage implements OnInit {
 
+  // les news 
   articles: INews[];
+  // boolean pour afficher (false) ou non (true) l'icône de chargement 
   content = false;
 
   constructor(
@@ -25,6 +27,7 @@ export class NewsPage implements OnInit {
     this.getNews();
   }
 
+  // pour accéder à la page selected-news selon l'article sélectionner 
   async selectedNews(url: string, urlToImage: string, source: string, title: string, description: string, content: string) {
     const modal = await this.modalController.create({
       component: SelectedNewPage,
@@ -47,10 +50,12 @@ export class NewsPage implements OnInit {
     }, 2000);
   }
 
+  // pour acceder à la page search
   search(): void {
     this.router.navigate(['search']);
   }
 
+  // récupère les derniers news et les inclus dans la variable articles 
   getNews(): void {
     this.news.getNews().subscribe(
       data => {

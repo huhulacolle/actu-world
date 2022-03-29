@@ -26,6 +26,7 @@ export class AppComponent implements OnInit {
     window.screen.orientation.lock('portrait');
   }
 
+  // recupère la langue selectionner par l'utilisateur 
   getLangPref(): void {
     this.appPref.fetch('lang').then(
       lang => {
@@ -34,6 +35,7 @@ export class AppComponent implements OnInit {
     );
   }
 
+  // vérifie si l'app contient déjà en mémoire une langue par défaut, sinon la langue fr y est appliqué
   verifLangPref(lang: string): void {
     if (!lang) {
       this.appPref.store('lang', 'fr');
@@ -41,6 +43,8 @@ export class AppComponent implements OnInit {
     }
   }
 
+  // lance le code au démarrage de l'application ou de la page
+  // on pourrait passer par le constructeur, mais par convention sur Angular on passe par le ngOnInit
   ngOnInit() {
     this.getLangPref();
     this.news.getLangPreference();

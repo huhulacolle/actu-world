@@ -8,15 +8,12 @@ import { Observable } from 'rxjs';
 })
 export class NewsService {
 
+  // Clé pour NewsAPI 
   API_KEY = '73ce7275f8134bee9e9d0399d2ae3314';
 
   lang: string;
 
   constructor(private http: HttpClient, private appPref: AppPreferences) { }
-
-  firstStart(lang: string): void {
-    this.lang = lang;
-  }
 
   getLangPreference(): void {
     this.appPref.fetch('lang').then(
