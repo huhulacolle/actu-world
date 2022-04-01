@@ -20,7 +20,6 @@ export class AProposPage implements OnInit {
   androidVersion = this.device.version;
   constructeur = this.device.manufacturer;
   model = this.device.model;
-  serial = this.device.serial;
   tap = 0;
   blague: IBlague;
 
@@ -93,8 +92,7 @@ export class AProposPage implements OnInit {
       "Version :" + this.version + " \n" +
       "Version d'Android : " + this.androidVersion + " \n" +
       "Constructeur : " + this.constructeur + " \n" +
-      "Modèle : " + this.model + " \n" +
-      "Serial : " + this.serial + " \n";
+      "Modèle : " + this.model + " \n";
       const email: OpenOptions = {
         to: ["QuestionActuWorld@yopmail.com"],
         subject: 'Phone Hardware for Debug - Actu World',
