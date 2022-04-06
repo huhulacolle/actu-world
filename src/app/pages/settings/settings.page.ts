@@ -103,7 +103,7 @@ export class SettingsPage implements OnInit {
 
   async resetFavoris(): Promise<void>  {
     const alert = this.alertController.create({
-      message: 'Voulez vous supprimer les données de l\'application ?',
+      message: 'Voulez vous supprimer les Favoris de l\'application ?',
       buttons: [
         {
           text: 'Non'
@@ -135,6 +135,26 @@ export class SettingsPage implements OnInit {
       ]
     });
     alert.present();
+  }
+
+  async deleteAll(): Promise<void> {
+    const alert = this.alertController.create({
+      message: 'Voulez vous supprimer les données de l\'application ?',
+      buttons: [
+        {
+          text: 'Non'
+        },
+        {
+          text: 'Oui',
+          handler: () => {
+            this.sql.resetFav();
+            this.appPref.remove('lang');
+            this.messageRestart();
+          }
+        }
+      ]
+    });
+    (await alert).present()
   }
 
 }
