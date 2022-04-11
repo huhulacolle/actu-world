@@ -30,7 +30,7 @@ export class FavoritePage implements OnInit {
     }, 1000);
   }
 
-  async selectedNews(url: string, urlToImage: string, source: string, title: string, description: string, content: string) {
+  async selectedNews(url: string, urlToImage: string, source: string, title: string, description: string, content: string): Promise<void> {
     const modal = await this.modalController.create({
       component: SelectedNewPage,
       componentProps: {
@@ -55,7 +55,7 @@ export class FavoritePage implements OnInit {
     return await modal.present();
   }
 
-  // récupère les derniers news mis en favoris et les inclus dans la variable favoris 
+  // récupère les derniers news mis en favoris et les inclus dans la variable favoris
   getFav(): void {
     this.sql.getFav().then((data) => {
       this.favoris = [];

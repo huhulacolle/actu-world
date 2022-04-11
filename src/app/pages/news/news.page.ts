@@ -12,9 +12,9 @@ import { SelectedNewPage } from '../selected-new/selected-new.page';
 })
 export class NewsPage implements OnInit {
 
-  // les news 
+  // les news
   articles: INews[];
-  // boolean pour afficher (false) ou non (true) l'icône de chargement 
+  // boolean pour afficher (false) ou non (true) l'icône de chargement
   content = false;
 
   constructor(
@@ -27,8 +27,8 @@ export class NewsPage implements OnInit {
     this.getNews();
   }
 
-  // pour accéder à la page selected-news selon l'article sélectionner 
-  async selectedNews(url: string, urlToImage: string, source: string, title: string, description: string, content: string) {
+  // pour accéder à la page selected-news selon l'article sélectionner
+  async selectedNews(url: string, urlToImage: string, source: string, title: string, description: string, content: string): Promise<void> {
     const modal = await this.modalController.create({
       component: SelectedNewPage,
       componentProps: {
@@ -55,7 +55,7 @@ export class NewsPage implements OnInit {
     this.router.navigate(['search']);
   }
 
-  // récupère les derniers news et les inclus dans la variable articles 
+  // récupère les derniers news et les inclus dans la variable articles
   getNews(): void {
     this.news.getNews().subscribe(
       data => {

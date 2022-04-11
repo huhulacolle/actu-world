@@ -105,7 +105,7 @@ export class SearchPage implements OnInit {
     this.navCtrl.back();
   }
 
-  async selectedNews(url: string, urlToImage: string, source: string, title: string, description: string, content: string) {
+  async selectedNews(url: string, urlToImage: string, source: string, title: string, description: string, content: string): Promise<void> {
     const modal = await this.modalController.create({
       component: SelectedNewPage,
       componentProps: {
