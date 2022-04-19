@@ -38,11 +38,13 @@ export class SelectedNewPage implements OnInit {
     }
   }
 
+  // copie l'url de l'article dans le presse papier
   copy(): void {
     this.clipboard.copy(this.url);
     this.message('copy');
   }
 
+  // verifie si l'article est en favoris ou non
   isFav(): void {
     this.sql.isFav(this.title).then((data) => {
       if (data.rows.length > 0) {
@@ -55,6 +57,7 @@ export class SelectedNewPage implements OnInit {
 
   }
 
+  // ajoute l'article en favoris
   favoris(): void {
     if (!this.source) {
       this.source = 'QRCode';
@@ -63,11 +66,13 @@ export class SelectedNewPage implements OnInit {
     this.message('add');
   }
 
+  // supprime l'article des favoris
   deleteFav(): void {
     this.sql.deleteFav(this.title);
     this.message('delete');
   }
 
+  // permet d'ajouter ou supprimé un favori d'un article
   async presentAlert(): Promise<void> {
 
     this.sql.isFav(this.title).then(async (data) => {
@@ -107,6 +112,7 @@ export class SelectedNewPage implements OnInit {
     });
   }
 
+  // affiche un message toast selon l'action de l'utilisateur
   async message(msg: string): Promise<void> {
     let toast:  HTMLIonToastElement;
 
@@ -138,6 +144,8 @@ export class SelectedNewPage implements OnInit {
     toast.present();
   }
 
+
+  // création d'un objet contenant les données de l'article pour le mettre dans le QRCode
   setQRCode(): void {
     if (this.qrcode) {
       this.qrcode = false;
@@ -157,10 +165,12 @@ export class SelectedNewPage implements OnInit {
     }
   }
 
+  // lance le menu partage native d'Android
   share(): void {
     this.socialSharing.share(this.url);
   }
 
+  // retour à la page précédente
   back(): void {
     this.modalController.dismiss(true);
   }

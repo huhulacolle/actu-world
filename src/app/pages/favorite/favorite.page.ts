@@ -30,6 +30,7 @@ export class FavoritePage implements OnInit {
     }, 1000);
   }
 
+  // lance la page selectedNews selon l'article sélectionné par l'utilisateur dans l'interface utilisateur
   async selectedNews(url: string, urlToImage: string, source: string, title: string, description: string, content: string): Promise<void> {
     const modal = await this.modalController.create({
       component: SelectedNewPage,

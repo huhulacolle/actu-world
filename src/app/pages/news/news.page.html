@@ -4,6 +4,7 @@
       <ion-menu-button></ion-menu-button>
     </ion-buttons>
     <ion-buttons slot="end">
+      <!-- bouton recherche  -->
       <ion-button (click)="search()">
         <ion-icon slot="icon-only" ios="add-outline" md="search"></ion-icon>
       </ion-button>
@@ -16,20 +17,26 @@
 
 <ion-content [fullscreen]="true">
 
+  <!-- affiche une animation de chargement pendant que l'appel api -->
   <div class="ion-text-center" *ngIf="!content">
     <br>
     <ion-spinner></ion-spinner>
   </div>
 
+
+  <!-- animation lors du rafraîchissement de la page -->
   <ion-refresher slot="fixed" (ionRefresh)="refresh($event)">
     <ion-refresher-content></ion-refresher-content>
   </ion-refresher>
+  <!-- boucle les différents articles qu'envoi l'api  -->
   <div *ngIf="content">
     <div *ngFor="let article of articles">
       <ion-card (click)="selectedNews(article.url, article.urlToImage, article.source.name, article.title, article.description, article.content)">
+        <!-- si l'image associée à l'article n'est pas trouvée par l'api, il affiche l'icône de l'app -->
         <div *ngIf="article.urlToImage == null ; else img">
           <img src="assets/icon/icon.png" sizes="200">
         </div>
+        <!-- affiche l'image si l'api en trouve une -->
         <ng-template #img>
           <ion-img [src]="article.urlToImage"></ion-img>
         </ng-template>

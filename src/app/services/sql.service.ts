@@ -17,6 +17,7 @@ export class SqlService {
     private http: HttpClient
     )
     {
+      // crée la base de données SQLITE si elle n'exite pas encore
     this.sqlite.create({
       name: 'news.db',
       location: 'default'
@@ -31,6 +32,7 @@ export class SqlService {
       );
     }
 
+  // crée les tables SQL si elle n'existent pas encore
   seedDatabase(): void {
     this.http.get('assets/script.sql', { responseType: 'text'})
       .subscribe(sql => {
@@ -49,6 +51,7 @@ export class SqlService {
       });
   }
 
+  // verifie si un article est noté comme Favoris ou non
   isFav(title: string): Promise<any> {
     return this.db.executeSql('SELECT * FROM favoris WHERE title = ?', [title])
       .then(res => res)

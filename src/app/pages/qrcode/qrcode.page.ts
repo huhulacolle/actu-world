@@ -23,6 +23,7 @@ export class QrcodePage implements OnInit {
     this.startScanner();
   }
 
+  // affiche l'article scanner par le QRCode
   async selectedNews(url: string, urlToImage: string, source: string, title: string, description: string, content: string): Promise<void> {
     const modal = await this.modalController.create({
       component: SelectedNewPage,
@@ -38,6 +39,7 @@ export class QrcodePage implements OnInit {
     return await modal.present();
   }
 
+  // verifie les permissions de l'appareil photo
   async checkPermission(): Promise<boolean> {
     return new Promise(async (resolve) => {
       const status = await BarcodeScanner.checkPermission({ force: true });

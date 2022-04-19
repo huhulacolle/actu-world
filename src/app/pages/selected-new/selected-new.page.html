@@ -14,6 +14,7 @@
   </ion-toolbar>
 </ion-header>
 
+<!-- menu QRCode -->
 <ion-segment value="app" *ngIf="qrcode">
   <ion-segment-button (click)="segment = 0" value="app">
     <ion-label >Via Application</ion-label>
@@ -25,6 +26,7 @@
 
 <ion-content>
 
+  <!-- même chose que la page News excepté que ce n'est pas dans une boucle -->
   <ng-container *ngIf="!qrcode">
     <div *ngIf="urlToImage != null">
       <ion-img [src]="urlToImage"></ion-img>
@@ -43,31 +45,35 @@
       </div>
     </ion-card-content>
 
+    <!-- bouton de partage -->
     <ion-fab vertical="bottom" horizontal="end" slot="fixed">
       <ion-fab-button>
         <ion-icon name="share"></ion-icon>
       </ion-fab-button>
       <ion-fab-list side="top">
+        <!-- menu partage native d'Android -->
         <ion-fab-button (click)="share()">
           <ion-icon name="share-outline"></ion-icon>
         </ion-fab-button>
+        <!-- affiche le QRCode de partage -->
         <ion-fab-button (click)="setQRCode()">
           <ion-icon name="qr-code-outline"></ion-icon>
         </ion-fab-button>
+        <!-- copie dans le presse-papier l'url de l'article -->
         <ion-fab-button (click)="copy()">
           <ion-icon name="link-outline"></ion-icon>
         </ion-fab-button>
       </ion-fab-list>
     </ion-fab>
   </ng-container>
-  
-
 
   <ng-container *ngIf="qrcode">
     <div class="container" (click)="setQRCode()">
+      <!-- QRCode contenant l'article -->
       <ng-container *ngIf="segment === 0">
         <qrcode class="container" [qrdata]="data" [width]="384"></qrcode>
       </ng-container>
+      <!-- QRCode contenant l'url de l'article -->
       <ng-container *ngIf="segment === 1">
         <qrcode class="container" [qrdata]="url" [width]="384"></qrcode>
       </ng-container>

@@ -24,10 +24,10 @@ export class AProposPage implements OnInit {
   blague: IBlague;
 
   constructor(
-    private appVersion: AppVersion, 
-    private device: Device, 
+    private appVersion: AppVersion,
+    private device: Device,
     private toastController: ToastController,
-    private blagueService: BlagueService, 
+    private blagueService: BlagueService,
     private alertController: AlertController) { }
 
   ngOnInit() {
@@ -51,6 +51,7 @@ export class AProposPage implements OnInit {
     );
   }
 
+  // easter egg
   secret(): void {
     this.tap++;
     if (this.tap >= 5) {
@@ -86,9 +87,10 @@ export class AProposPage implements OnInit {
     await alert.present();
   }
 
+  // ouvre l'application mail de l'utilisateur
   async openEmail(problem: string): Promise<void> {
     if (!(problem == null || problem === "")) {
-      const body = problem + " \n \n " + 
+      const body = problem + " \n \n " +
       "Version :" + this.version + " \n" +
       "Version d'Android : " + this.androidVersion + " \n" +
       "Constructeur : " + this.constructeur + " \n" +
@@ -98,12 +100,12 @@ export class AProposPage implements OnInit {
         subject: 'Phone Hardware for Debug - Actu World',
         body: body
       };
-  
+
       if (await EmailComposer.hasAccount()) {
         EmailComposer.open(email);
       } else {
         alert("Erreur : Application mail manquante")
-      }  
+      }
     }
     else {
       const alert = await this.alertController.create({

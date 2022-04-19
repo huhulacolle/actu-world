@@ -11,10 +11,13 @@
 
 <ion-content [fullscreen]="true">
 
+  <!-- affiche une animation de chargement pendant que l'appel api -->
   <div *ngIf="!(content || error)" style="text-align: center;">
     <br>
     <ion-spinner></ion-spinner>
   </div>
+
+  <!-- même chose que la page News -->
   <div *ngIf="content">
     <div *ngFor="let favori of favoris">
       <ion-card
@@ -32,6 +35,8 @@
     </div>
   </div>
 
+
+  <!-- affiche le message si aucun favoris n'a été trouvé -->
   <div id="container" *ngIf="error">
     Vous n'avez aucuns favoris
   </div>
