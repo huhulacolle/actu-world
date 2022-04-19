@@ -4,16 +4,13 @@ ActuWorld est une application mobile de News pour Android développer à l'aide 
 
 L'application permet d'accéder aux derniers articles disponibles dans le monde à l'aide de l'api [NewsAPI](https://newsapi.org/).
 
-Documentation
-=============
-
  ### **Technologie utilisée :** 
  - NodeJS
  - Angular + Ionic (Framework Javascript)
  - Android Studio
  - Typescript (Langage)
 
- ### **Présentation des frameworks :** 
+ ### **Présentation des frameworks et langages :** 
  
 <ul>
   <li><u>Ionic</u> est un framework de développement d’application mobile hybride créé par Drifty. Il permet de construire des applications multiplateformes à partir de : </li>
@@ -26,13 +23,15 @@ Documentation
   </li>
 </ul>
 
-- <u>Angular</u> est un framework côté client, open source, basé sur TypeScript, Il permet la création d’applications Web et est basé sur uneune architecture du type MVC et permet donc de séparer les données
+- <u>Angular</u> est un framework côté client, open source, basé sur TypeScript, Il permet la création d’applications Web et est basé sur une architecture du type MVC et permet donc de séparer les données
+
+- <u>Typescript</u> est un langage de programmation libre et open source développé comme un sur-ensemble de Javascript. Le langage introduit des fonctionnalités optionnelles comme le typage ou la programmation orientée objet.
 
 
-Installation du projet en local
+Installation du projet en local :
 =============
 
- ### **prérequis :** 
+### **prérequis :** 
 - Node JS -> https://nodejs.org/fr/
 -  Android Studio -> https://developer.android.com/studio
 - Ionic CLI -> ```npm install -g @ionic/cli```
@@ -102,3 +101,8 @@ puis <br>
 - installer "Cordova-Res" -> ```npm install -g cordova-res``` <br>
 - écrire la commande : ```cordova-res android --copy --skip-config```
 
+Documentation
+=============
+
+- [Angular](https://angular.io/guide/understanding-angular-overview)
+- [Ionic](https://ionicframework.com/docs/angular/overview)
