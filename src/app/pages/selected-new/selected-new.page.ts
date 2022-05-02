@@ -135,7 +135,7 @@ export class SelectedNewPage implements OnInit {
 
       case 'copy':
         toast = await this.toastController.create({
-          message: 'URL de l\'article copié dans le presse-papier',
+          message: 'Copié dans le presse-papier',
           duration: 2000,
         });
 
