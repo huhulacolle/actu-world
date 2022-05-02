@@ -11,8 +11,8 @@
 
   <ion-list>
     <ion-item> <ion-icon name="apps-outline"></ion-icon>  nom de l'app : {{nom}} </ion-item>
-    <ion-item> ⬆️ version : {{version}} </ion-item>
-    <ion-item> <ion-icon name="logo-android" style="color: green;"></ion-icon>  Android : {{androidVersion}} </ion-item> 
+    <ion-item> ⬆️ version : 1.1 </ion-item>
+    <ion-item> <ion-icon name="logo-android" style="color: green;"></ion-icon>  Android : {{androidVersion}} </ion-item>
     <ion-item> 📱 Constructeur : {{constructeur}} </ion-item>
     <ion-item> ⚙️ Modèle : {{model}} </ion-item>
   </ion-list>
@@ -20,9 +20,9 @@
   <div class="ion-text-end">
     <ion-button (click)="problem()"> <ion-icon name="mail-outline"></ion-icon> Signaler un problème</ion-button>
   </div>
-  
+
   <br> <br>
-  
+
   {{blague?.joke}} <br> {{blague?.answer}}
 
 </ion-content>

@@ -16,7 +16,7 @@ import { AlertController, ToastController } from '@ionic/angular';
 export class AProposPage implements OnInit {
 
   nom: string;
-  version: string;
+  version: 1.1;
   androidVersion = this.device.version;
   constructeur = this.device.manufacturer;
   model = this.device.model;
@@ -26,27 +26,17 @@ export class AProposPage implements OnInit {
   constructor(
     private appVersion: AppVersion,
     private device: Device,
-    private toastController: ToastController,
     private blagueService: BlagueService,
     private alertController: AlertController) { }
 
   ngOnInit() {
     this.getAppName();
-    this.getVersionNumber();
   }
 
   getAppName(): void {
     this.appVersion.getAppName().then(
       data => {
         this.nom = data;
-      }
-    );
-  }
-
-  getVersionNumber(): void {
-    this.appVersion.getVersionNumber().then(
-      data => {
-        this.version = data;
       }
     );
   }
