@@ -7,5 +7,5 @@ L'application permet d'accéder aux derniers articles disponibles dans le monde 
 ---
 
 - [Documentation technique](https://github.com/huhulacolle/actu-world/blob/master/docs/technique.md)
-- [Documentation utilisateur](https://github.com/huhulacolle/actu-world/blob/master/docs/utilisateur.pdf)
+- [Documentation utilisateur](https://github.com/huhulacolle/actu-world/blob/master/docs/Doc_Utilisateur.pdf)
 
