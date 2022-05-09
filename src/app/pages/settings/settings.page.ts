@@ -13,7 +13,6 @@ export class SettingsPage implements OnInit {
 
   lang: any;
 
-
   // selectLang = [
   //   { text: 'Français', value: 'fr' },
   //   { text: 'Anglais', value: 'en' },
@@ -33,8 +32,8 @@ export class SettingsPage implements OnInit {
   ]
 
   constructor(
-    private router: Router, 
-    private alertController: AlertController, 
+    private router: Router,
+    private alertController: AlertController,
     private sql: SqlService,
     private appPref: AppPreferences,
     private pickerController: PickerController
